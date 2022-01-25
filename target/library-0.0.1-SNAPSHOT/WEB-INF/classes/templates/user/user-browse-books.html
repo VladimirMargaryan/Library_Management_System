@@ -64,6 +64,8 @@
 							<input class="table" th:if="${user.getStatus().toString() != 'BLOCKED'
 							 && book.reservedBy == null && book.getBookStatus().toString() != 'NO_CIRCULATION' && book.usedBy != user.id}" type="submit" value="Reserve book">
 							<input type="hidden" th:value="${book.id}" name="reservedBookId">
+							<input type="hidden" th:value="${keyword}" name="keyword">
+							<input type="hidden" th:value="${sortBy}" name="sortBy">
 
 							<input type="hidden" th:value="${bookPage.number + 1}" name="page">
 						</form>

@@ -31,11 +31,11 @@
 		<table th:if="${!userPage.content.isEmpty()}" id="tablestyle" class="css-serial">
 			<tr>
 				<th>#</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Email</th>
-				<th>Phone</th>
-				<th>Gender</th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='firstname')}" style="display:block; color: white">First Name</a></th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='lastname')}" style="display:block; color: white">Last Name</a></th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='email')}" style="display:block; color: white">Email</a></th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='phone')}" style="display:block; color: white">Phone</a></th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='gender')}" style="display:block; color: white">Gender</a></th>
 				<th>Account status</th>
 				<th style="width: 150px">Action</th>
 			</tr>
@@ -57,7 +57,7 @@
 		</table>
 		<br>
 		<div th:if="${userPage.totalPages > 0 && userPage.content.size() > 0}" class="pagination" th:each="pageNumber : ${pageNumbers}">
-			<a th:href="@{/employee/users/showusers(page=${pageNumber}, keyword=${keyword})}"
+			<a th:href="@{/employee/users/showusers(page=${pageNumber}, keyword=${keyword}, sortBy=${sortBy})}"
 			   th:text="${pageNumber}"
 			   th:class="${pageNumber==userPage.number + 1} ? active"></a>
 		</div>

@@ -16,10 +16,10 @@
 		<table th:if="${bookPage.content.size() > 0}" id="tablestyle" class="css-serial">
 			<tr>
 				<th>#</th>
-				<th>Title</th>
-				<th>Author</th>
-				<th>Release Year</th>
-				<th>Genre</th>
+				<th><a th:href="@{/user/yourreservations(sortBy='name')}" style="display:block; color: white">Title</a></th>
+				<th><a th:href="@{/user/yourreservations(sortBy='authors.firstname')}" style="display:block; color: white">Author</a></th>
+				<th><a th:href="@{/user/yourreservations(sortBy='releaseYear')}" style="display:block; color: white">Release Year</a></th>
+				<th><a th:href="@{/user/yourreservations(sortBy='genre')}" style="display:block; color: white">Genre</a></th>
 				<th>ISBN</th>
 				<th>Reserved Until</th>
 			</tr>
@@ -35,7 +35,7 @@
 		</table>
 		<br>
 		<div th:if="${bookPage.totalPages > 0}" class="pagination" th:each="pageNumber : ${pageNumbers}">
-			<a th:href="@{/user/yourreservations(page=${pageNumber})}"
+			<a th:href="@{/user/yourreservations(page=${pageNumber}, sortBy=${sortBy})}"
 			   th:text="${pageNumber}"
 			   th:class="${pageNumber==bookPage.number + 1} ? active"></a>
 		</div>

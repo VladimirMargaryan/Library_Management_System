@@ -9,16 +9,19 @@ import com.app.library.model.User;
 import com.app.library.service.BookService;
 import com.app.library.service.NotificationService;
 import com.app.library.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import java.text.DateFormat;
 import java.util.List;
 
 @Configuration
 @EnableScheduling
+@Slf4j
 public class ScheduledTasks {
 
     @Autowired
@@ -36,9 +39,12 @@ public class ScheduledTasks {
     @Async
     @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
     public void deleteOldNotifications() {
+        log.info("Start of scheduled task for deleting old notifications on "
+                + DateFormat.getDateTimeInstance().format(System.currentTimeMillis()));
+
         List<Notification> notifications = notificationService.getAll();
         for (Notification notification : notifications) {
-            if (notification.getCreationDate() > notification.getCreationDate() + 1000 * 60 * 60 * 24 * 3){
+            if (System.currentTimeMillis() > notification.getCreationDate() + 1000 * 60 * 60 * 24 * 3){
                 notificationService.removeById(notification.getId());
             }
         }
@@ -47,6 +53,9 @@ public class ScheduledTasks {
     @Async
     @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
     public void sendEmailToUserAboutExpirationOfReturnDate() throws NotFoundException {
+        log.info("Start of scheduled task 'sendEmailToUserAboutExpirationOfReturnDate' on "
+                + DateFormat.getDateTimeInstance().format(System.currentTimeMillis()));
+
         List<Book> books = bookService.getAllByStatus(BookStatus.CHECKED_OUT);
         if (books != null && !books.isEmpty()) {
             for (Book book : books) {
@@ -57,7 +66,7 @@ public class ScheduledTasks {
                         if (user != null) {
                             String subject = "reservation expires after 2 days";
                             String message = "Dear " + user.getFirstname() + ", your taken book's"
-                                    + "date expires after 2 days, on " + book.getReservedUntil() + ". "
+                                    + "date expires after 2 days, on " + DateFormat.getDateTimeInstance().format(book.getReservedUntil()) + ". "
                                     + "Please extend time or return the book to library.";
                             mailSender.sendSimpleMessage(user.getEmail(), subject, message);
                             Notification notification = new Notification(System.currentTimeMillis(), message, book.getUsedBy());
@@ -72,6 +81,9 @@ public class ScheduledTasks {
     @Async
     @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
     public void cancelReservationIfNotPickedUp() throws NotFoundException {
+        log.info("Start of scheduled task for canceling reservations of not picked up books on "
+                + DateFormat.getDateTimeInstance().format(System.currentTimeMillis()));
+
         List<Book> books = bookService.getAllByStatus(BookStatus.READY_FOR_PICK_UP);
         for (Book book : books) {
             if (System.currentTimeMillis() > book.getReservedUntil()) {
