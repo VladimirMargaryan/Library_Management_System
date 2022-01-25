@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Set Reservations to Ready For Pick-Up</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+<div class="container">
+    <h3>Set books reservations to ready for pick-up</h3>
+    <p>Are you sure?</p>
+    <p>You are about to set these books' statuses to ready for pick-up:</p>
+
+    <div th:if="${booksOfUSer.size() > 0}">
+        <table id="tablestyle" class="css-serial">
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Release Year</th>
+                <th>Genre</th>
+                <th>Reserved by</th>
+                <th>Reserved Until</th>
+            </tr>
+            <tr th:each="book : ${booksOfUSer}">
+                <td></td>
+                <td th:text="${book.key.name}"></td>
+                <td th:text="${book.key.authors.get(0).firstname + ' ' + book.key.authors.get(0).lastname}"></td>
+                <td th:text="${book.key.releaseYear}"></td>
+                <td th:text="${book.key.genre.value}"></td>
+                <td th:text="${book.value.firstname + ' ' + book.value.lastname}"></td>
+                <td th:text="${#dates.format(book.key.reservedUntil, 'dd-MMM-yyyy HH:mm')}"></td>
+            </tr>
+        </table>
+    </div>
+                <div class="row">
+        <div class="col-50">
+            <form th:action="@{/employee/updatebooksreservations}" th:method="PUT" th:object="${form}">
+                <input type="submit" value="Yes">
+                <input type="hidden" th:name="_method" th:value="PUT">
+                <input type="hidden"  th:value="${form.books}" th:field="*{books}" required="required">
+                <input type="hidden" name="unprocessedPage" th:value="${unprocessedPage.get()}">
+                <input type="hidden" name="processedPage" th:value="${processedPage.get()}">
+
+            </form>
+        </div>
+        <div class="col-50">
+            <form th:action="@{/employee/reservations}" method="GET">
+                <input style="background-color: red" type="submit" value="No">
+                <input type="hidden" name="unprocessedPage" th:value="${unprocessedPage.get()}">
+                <input type="hidden" name="processedPage" th:value="${processedPage.get()}">
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <div th:if="${title != null}">
+        <title>[[${title}]]</title>
+    </div>
+    <link rel="stylesheet" type="text/css" th:href="@{/CSS/security-layout.css}">
+</head>
+<body>
+<div class="wrapperLogout">
+    <div class="containerLogout">
+        <div th:if="${h2 != null}">
+            <h2>[[${h2}]]</h2>
+        </div>
+
+        <div th:if="${error != null}">
+            <p class="text-danger">[[${error}]]</p>
+        </div>
+        <div th:if="${message != null}">
+            <p class="text-warning">[[${message}]]</p>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

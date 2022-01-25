@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Confirm returned books</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+
+	<div class="container">
+		
+		<h3>Confirm returned books</h3>
+		
+		<div class="row">
+			<div class="col-25">
+				<text>Name:</text>
+			</div>
+			<div class="col-50">
+				<text th:text="${user.firstname + ' ' + user.lastname}"></text>
+			</div>
+		</div>
+					
+		<div class="row">
+			<div class="col-25">
+				<text>Email:</text>
+			</div>
+			<div class="col-50">
+				<text th:text="${user.email}"></text>
+			</div>					
+		</div>		
+					
+		<div class="row">
+			<div class="col-25">
+				<text>Phone:</text>
+			</div>
+			<div class="col-50">
+				<text th:text="${user.phone}"></text>
+			</div>	
+		</div>
+		<br/>
+		
+		<table id="tablestyle" class="css-serial">
+			<tr>
+				<th>#</th>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Release Year</th>
+				<th>Genre</th>
+				<th>ISBN</th>
+				<th>Return Date</th>
+			</tr>
+			<tr th:each="selectedBook : ${selectedBooks}">
+				<td></td>
+				<td th:text="${selectedBook.name}"></td>
+				<td th:text="${selectedBook.authors.get(0).firstname + ' ' + selectedBook.authors.get(0).lastname}"></td>
+				<td th:text="${selectedBook.releaseYear}"></td>
+				<td th:text="${selectedBook.genre.value}"></td>
+				<td th:text="${selectedBook.isbn}"></td>
+				<td th:text="${#dates.format(selectedBook.returnDate, 'dd-MMM-yyyy HH:mm')}"></td>
+			</tr>
+		</table>
+		
+		<div class="row">
+			<div class="col-75">
+				<form th:action="@{/employee/savereturnedbooks}" th:method="PUT">
+					<input style="width: 225px" type="submit" value="Confirm and return books">
+					<input type="hidden" th:value="${user.id}" name="userId">
+					<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
+					<input type="hidden" th:value="PUT" th:name="_method">
+				</form>
+			</div>
+			<div class="col-75">	
+				<form th:action="@{/employee/returnedbooks}" method="GET">
+					<input style="width: 225px; background-color: red" type="submit" value="Cancel">
+					<input type="hidden" th:value="${selectedBookIds}" name="selectedBookIdsInString">
+				</form>
+			</div>	
+		</div>
+	</div>	
+
+</body>
+</html>

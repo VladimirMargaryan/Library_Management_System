@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+
+<script>
+  let btns = document.querySelectorAll(".item");
+  Array.from(btns).forEach(item => {
+    item.addEventListener("click", () => {
+      let selected = document.getElementsByClassName("active");
+      selected[0].className = selected[0].className.replace(" active", "");
+      item.className += " active";
+    });
+  });
+
+  function makeActive() {
+    let element = document.getElementById("text");
+    element.classList.add("active");
+    element.innerHTML="This is Active";
+  }
+</script>
+
+<ul th:fragment="userNavBar" >
+  <li class="navigation"><a class="item" th:href="@{/user}">Home</a></li>
+  <li class="navigation"><a class="item" th:href="@{/user/yourbooks}">Your Books</a></li>
+  <li class="navigation"><a class="item" th:href="@{/user/browsebooks}">Browse Books</a></li>
+  <li class="navigation"><a class="item" th:href="@{/user/yourreservations}">Your Reservations</a></li>
+  <li class="navigation"><a class="item" th:href="@{/user/FAQ}">FAQ</a></li>
+  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+
+<ul th:fragment="employeeNavBar" >
+  <li class="navigation"><a class="item" th:href="@{/employee}">Home</a></li>
+  <li class="navigation"><a class="item" th:href="@{/employee/users/showusers}">Users</a></li>
+  <li class="navigation"><a class="item" th:href="@{/employee/books/showbooks}">Catalog</a></li>
+  <li class="navigation"><a class="item" th:href="@{/employee/orders}">Place Order</a></li>
+  <li class="navigation"><a class="item" th:href="@{/employee/returnedbooks}">Return Books</a></li>
+  <li class="navigation"><a class="item" th:href="@{/employee/reservations}">Process Reservations</a></li>
+  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+<ul th:fragment="adminNavBar" >
+  <li class="navigation"><a class="item" th:href="@{/admin}">Home</a></li>
+  <li class="navigation"><a class="item" th:href="@{/admin/manageaccounts}">Manage Accounts</a></li>
+  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+
+</body>
+</html>

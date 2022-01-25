@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Users</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: employeeNavBar"></ul>
+	
+	<div class="container">
+
+				
+		<h3>Users</h3>
+				
+		<div class="row">
+			
+			<form th:action="@{/employee/users/showusers}" method="GET">
+				<div class="col-25">
+					<Label for="keyword">Search</Label>
+				</div>
+				<div class="col-search">
+					<input type="search" th:value="${keyword}" id="keyword" name="keyword" placeholder="Search user">
+				</div>
+				<div >
+					<input type="submit" value="Search">
+				</div>
+			</form>
+		</div>
+		<br/>
+		<table th:if="${!userPage.content.isEmpty()}" id="tablestyle" class="css-serial">
+			<tr>
+				<th>#</th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='firstname')}" style="display:block; color: white">First Name</a></th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='lastname')}" style="display:block; color: white">Last Name</a></th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='email')}" style="display:block; color: white">Email</a></th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='phone')}" style="display:block; color: white">Phone</a></th>
+				<th><a th:href="@{/employee/users/showusers(keyword=${keyword}, sortBy='gender')}" style="display:block; color: white">Gender</a></th>
+				<th>Account status</th>
+				<th style="width: 150px">Action</th>
+			</tr>
+			
+			<tr th:each="user : ${userPage.content}">
+				<td></td>
+				<td th:text="${user.firstname}"></td>
+				<td th:text="${user.lastname}"></td>
+				<td th:text="${user.email}"></td>
+				<td th:text="${user.phone}"></td>
+				<td th:text="${user.gender.value}"></td>
+				<td th:text="${user.status}"></td>
+				<td>
+					<form th:action="@{/employee/users/showuserinfo/{userId}(userId=${user.id})}" method="GET">
+						<input class="table" type="submit" value="Show user info">
+					</form>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<div th:if="${userPage.totalPages > 0 && userPage.content.size() > 0}" class="pagination" th:each="pageNumber : ${pageNumbers}">
+			<a th:href="@{/employee/users/showusers(page=${pageNumber}, keyword=${keyword}, sortBy=${sortBy})}"
+			   th:text="${pageNumber}"
+			   th:class="${pageNumber==userPage.number + 1} ? active"></a>
+		</div>
+
+	</div>
+</body>
+</html>

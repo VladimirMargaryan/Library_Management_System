@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Your Books</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: userNavBar"></ul>
+	
+		<div class="container">
+			<h3>Your Books</h3>
+
+			<p th:if="${bookPage.content.isEmpty()}">You don't have any books in use.</p>
+			
+			<table th:if="${bookPage.content.size() > 0}" id="tablestyle" class="css-serial">
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Release Year</th>
+					<th>Genre</th>
+					<th>Return Date</th>
+					<th>Extend</th>
+				</tr>
+				
+				<tr  th:each="book : ${bookPage.content}">
+					<td></td>
+					<td th:text="${book.name}"></td>
+					<td th:text="${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}"></td>
+					<td th:text="${book.releaseYear}"></td>
+					<td th:text="${book.genre.value}"></td>
+					<td th:text="${#dates.format(book.returnDate, 'dd-MMM-yyyy HH:mm')}"></td>
+					<td style="width: 260px">
+						<form th:action="@{/user/yourbooks/extend}" th:method="PUT">
+							<input class="table" style="width: 250px" type="submit" value="Extend return date by one week">
+							<input type="hidden" th:value="${book.id}" name="bookId">
+							<input type="hidden" th:name="_method" th:value="PUT">
+						</form>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<div th:if="${bookPage.totalPages > 0}" class="pagination" th:each="pageNumber : ${pageNumbers}">
+				<a th:href="@{/user/yourbooks(page=${pageNumber})}"
+				   th:text="${pageNumber}"
+				   th:class="${pageNumber==bookPage.number + 1} ? active"></a>
+			</div>
+
+		</div>
+</body>
+</html>

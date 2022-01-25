@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage Account</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	
+	<div class="container">
+		<h3>Manage Account</h3>
+
+		<div class="row">	
+			<div class="col-50">
+				<text>First name:</text>		
+			</div>
+			<div class="col-75">
+				<text th:text="${user.firstname}"></text>
+			</div>
+		</div>
+		
+		
+		<div class="row">	
+			<div class="col-50">
+				<text>Last name:</text>		
+			</div>
+			<div class="col-75">
+				<text th:text="${user.lastname}"></text>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-50">
+				<text>Email:</text>
+			</div>
+			<div class="col-75">
+				<text th:text="${user.email}"></text>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-50">
+				<text>Phone:</text>
+			</div>
+			<div class="col-75">
+				<text th:text="${user.phone}"></text>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-50">
+				<text>Registration date:</text>
+			</div>
+			<div class="col-75">
+				<text th:text="${#dates.format(user.localDateTime, 'dd-MMM-yyyy HH:mm')}"></text>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-50">
+				<text>Gender:</text>
+			</div>
+			<div class="col-75">
+				<text th:text="${user.gender.value}"></text>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-50">
+				<text>Account Status:</text>
+			</div>
+			<div class="col-75">
+				<text th:text="${user.status}"></text>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-50">
+				<text>Role:</text>
+			</div>
+			<div class="col-75">
+				<div th:each="role : ${user.getRoles()}">
+					<text th:if="${role.getName().equals('ROLE_USER')}">User</text>
+					<text th:if="${role.getName().equals('ROLE_EMPLOYEE')}">Employee</text>
+					<text th:if="${role.getName().equals('ROLE_ADMIN')}">Admin</text>
+				</div>
+			</div>
+		</div>
+
+
+
+		<form th:action="@{/admin/confirmaccountsettings/{userId}(userId=${user.id})}" th:method="PUT">
+		<div class="row">
+			<div class="col-50">
+				<text>Change account status:</text>
+			</div>
+
+			<div class="col-50" th:if="${user.getStatus().toString() == 'VERIFIED'}">
+					<input type="radio" id="UserStatusFalse" name="accStatus" value="BLOCKED">
+					<text for="accStatus">Disable account</text>
+			</div>
+
+			<div class="col-50" th:if="${user.getStatus().toString() == 'BLOCKED'}">
+					<input  type="radio" id="UserStatusTrue" name="accStatus" value="VERIFIED">
+					<text for="enabled">Enable account</text>
+			</div>
+
+		</div>
+		
+		<div class="row">
+			<div class="col-50">
+				<text>Change Role:</text>
+			</div>
+
+			<div class="col-50">
+				<input type="radio" id="roleUser" name="role" value="ROLE_USER" th:checked="${user.getRoles().contains('ROLE_USER')}">
+				<text for="role">User</text>
+			</div>
+
+			<div class="col-50">
+				<input type="radio" id="roleEmployee" name="role" value="ROLE_EMPLOYEE" th:checked="${user.getRoles().contains('ROLE_EMPLOYEE')}">
+				<text for="role">Employee</text>
+			</div>
+
+			<div class="col-50">
+				<input type="radio" id="roleAdmin" name="role" value="ROLE_ADMIN" th:checked="${user.getRoles().contains('ROLE_ADMIN')}">
+				<text for="role">Admin</text>
+			</div>
+		</div>
+		<br/>
+	
+		<div class="row">
+			<div class="col-50">
+					<input type="submit" value="Save">
+					<input type="hidden" th:value="PUT" th:name="_method">
+					<input type="hidden" th:value="${user.status}">
+					<input type="hidden" th:value="${user.roles}">
+			</div>
+		</div>
+		</form>
+		<div class="col-50">
+			<form th:action="@{/admin/manageaccounts}" th:method="GET">
+				<input type="submit" value="Cancel" style="background-color: red">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
