@@ -329,7 +329,6 @@ public class EmployeeController {
 								@RequestParam(required = false) Optional<Integer> page,
 								@RequestParam(required = false) Optional<Integer> selectedBookPage,
 								@RequestParam(required = false) Optional<Integer> inUseBookPage,
-//								ListForm form,
 								Model model) throws NotFoundException {
 
 		Page<User> userPage;
@@ -358,26 +357,6 @@ public class EmployeeController {
 		selectedBookIdsInString =
 				util.removeSelectedBooks(removeBookId, selectedBookIdsInString, userId, selectedBooks, booksInUseByUser);
 
-//		if (selectedBookId != null && selectedBookId != 0){
-//			if (!form.getBooks().isEmpty())
-//				booksInUseByUser = form.getBooks();
-//			if (!form.getBookSet().isEmpty())
-//				selectedBooks = form.getBookSet();
-//			booksInUseByUser.removeIf(book -> book.getId().equals(selectedBookId));
-//			selectedBooks.add(bookService.getById(selectedBookId));
-//			form.setBooks(booksInUseByUser);
-//			form.setBookSet(selectedBooks);
-//		}
-//
-//		if (removeBookId != null && removeBookId != 0) {
-//			booksInUseByUser = form.getBooks();
-//			selectedBooks = form.getBookSet();
-//			selectedBooks.removeIf(book -> book.getId().equals(removeBookId));
-//			booksInUseByUser.add(0, bookService.getById(removeBookId));
-//			form.setBooks(booksInUseByUser);
-//			form.setBookSet(selectedBooks);
-//		}
-
 
 		int currentBooksPage = inUseBookPage.orElse(1);
 		Page<Book> booksOfUSer = bookService.findPaginated(PageRequest.of(currentBooksPage - 1, 5), booksInUseByUser);
@@ -403,7 +382,6 @@ public class EmployeeController {
 		model.addAttribute("userId", userId);
 		model.addAttribute("selectedBookId", selectedBookId);
 		model.addAttribute("removeBookId", removeBookId);
-//		model.addAttribute("form", form);
 		return "employee/employee-returned-books";
 	}
 
