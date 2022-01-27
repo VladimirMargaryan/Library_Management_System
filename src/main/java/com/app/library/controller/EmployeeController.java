@@ -1,6 +1,7 @@
 package com.app.library.controller;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.app.library.util.Util;
 import com.app.library.exception.NotFoundException;
@@ -485,6 +486,7 @@ public class EmployeeController {
 		Book book = bookService.getById(bookId);
 		User user = userService.getById(userId);
 		bookService.notifyingForPickingBookUp(book, user);
+
 		model.addAttribute("unprocessedPage", unprocessedPage);
 		model.addAttribute("processedPage", processedPage);
 		return "redirect:/employee/reservations";
@@ -495,8 +497,15 @@ public class EmployeeController {
 										  @RequestParam(required = false) Optional<Integer> processedPage,
 										  ListForm form,
 										  Model model) throws NotFoundException {
-		for (Book book : form.getBooks())
-			bookService.notifyingForPickingBookUp(book, userService.getById(book.getReservedBy()));
+		while (!form.getBooks().isEmpty()){
+			long reservedBy = form.getBooks().get(0).getReservedBy();
+			List<Book> oneUserBooks = form.getBooks()
+					.stream()
+					.filter(book -> book.getReservedBy().equals(reservedBy))
+					.collect(Collectors.toList());
+			form.getBooks().removeIf(book -> book.getReservedBy().equals(reservedBy));
+			bookService.notifyingUserForPickingUpBooks(oneUserBooks, userService.getById(reservedBy));
+		}
 
 		model.addAttribute("unprocessedPage", unprocessedPage);
 		model.addAttribute("processedPage", processedPage);

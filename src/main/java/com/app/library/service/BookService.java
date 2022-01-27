@@ -29,11 +29,12 @@ public interface BookService {
     List<Book> getAllByBookStatusAndReservedBy(BookStatus bookStatus, Long reservedBy);
     void doReservation(Book book, User user) throws NotFoundException;
     void notifyingForPickingBookUp(Book book, User user) throws NotFoundException;
-    void sendReservationReadyEmail(Book book, User user);
+    void notifyingUserForPickingUpBooks(List<Book> books, User user) throws NotFoundException;
+    void sendReservationReadyEmail(List<Book> books, User user);
     void sendPickUpAndReceiptEmail(Long userId, List<Receipt> receipts) throws NotFoundException;
     void doPickUp(Long userId) throws NotFoundException;
     void doReturnBooks(Set<Book> books, Long userId) throws NotFoundException;
-    void sendEmailAboutReturnedBook(Long userId, List<Receipt> receipts) throws NotFoundException;
+    void sendEmailAboutReturnedBook(Long userId, Set<Book> books) throws NotFoundException;
     Page<Book> findPaginated(Pageable pageable, Collection<Book> books);
     Page<ListEntry<Book, User>> findPaginated(Pageable pageable, Map<Book, User> bookUserMap);
 }

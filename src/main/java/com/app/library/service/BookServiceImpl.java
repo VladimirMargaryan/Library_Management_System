@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.context.Context;
 
+import javax.mail.MessagingException;
 import java.text.DateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -181,6 +183,7 @@ public class BookServiceImpl implements BookService {
         return bookRepository.getBookByBookStatusAndReservedBy(bookStatus, reservedBy);
     }
 
+    @Transactional
     @Override
     public void doReservation(Book book, User user) throws NotFoundException {
         if (!book.getBookStatus().equals(CHECKED_OUT_AND_RESERVED) && !book.getBookStatus().equals(RESERVED) && book.getReservedBy() == null) {
@@ -218,6 +221,7 @@ public class BookServiceImpl implements BookService {
         }
     }
 
+    @Transactional
     @Override
     public void notifyingForPickingBookUp(Book book, User user) throws NotFoundException {
         log.info("Notifying for pick up book " + book + " to user " + user);
@@ -227,42 +231,96 @@ public class BookServiceImpl implements BookService {
         Notification notification = new Notification(System.currentTimeMillis(), messageToUser);
         notification.setReceiverId(user.getId());
         notificationService.save(notification);
-        sendReservationReadyEmail(book, user);
+        List<Book> books = new ArrayList<>();
+        books.add(book);
+        sendReservationReadyEmail(books, user);
         book.setBookStatus(READY_FOR_PICK_UP);
         update(book);
     }
 
+    @Transactional
     @Override
-    public void sendReservationReadyEmail(Book book, User user) {
-        String subject = "Reservation is ready!";
-        String content = "Dear " + user.getFirstname() + ", \n Your reservation is ready for picking up! \n\"" +
-                book.getName() + "\" by " + book.getAuthors().get(0).getFirstname() + " " + book.getAuthors().get(0).getLastname() + ".";
+    public void notifyingUserForPickingUpBooks(List<Book> books, User user) throws NotFoundException {
+        log.info("Notifying for pick up book " + books + " to user " + user);
+        for (Book book : books){
+            String messageToUser = "Your reservation is ready for pick-up until " +
+                    DateFormat.getDateTimeInstance().format(book.getReservedBy()) + ". \"" + book.getName() + " by " +
+                    book.getAuthors().get(0).getFirstname() + " " + book.getAuthors().get(0).getLastname() + ".";
+            Notification notification = new Notification(System.currentTimeMillis(), messageToUser);
+            notification.setReceiverId(user.getId());
+            notificationService.save(notification);
+            book.setBookStatus(READY_FOR_PICK_UP);
+            update(book);
+        }
+        sendReservationReadyEmail(books, user);
+    }
+
+    @Override
+    public void sendReservationReadyEmail(List<Book> books, User user) {
+        String date = DateFormat.getDateTimeInstance().format(System.currentTimeMillis());
+        Map<String, Object> map = new HashMap<>();
+        map.put("books", books);
+        map.put("user", user);
+        map.put("date", date);
         log.info("Sending reservation email to user " + user);
-        mailSender.sendSimpleMessage(user.getEmail(), subject, content);
+        try {
+            Context context = new Context();
+            context.setVariables(map);
+            mailSender.sendEmailUsingTemplate(user.getEmail(),"Reservation is ready!",
+                    "reservation-template", context);
+        } catch (MessagingException e) {
+            log.error("Email doesn't send: " + e.getMessage());
+            e.printStackTrace();
+        }
         log.info("Email sent.");
     }
 
     @Override
     public void sendPickUpAndReceiptEmail(Long userId, List<Receipt> receipts) throws NotFoundException {
+        long receiptN = 0;
+        String orderDate = null;
+        String expirationDate = null;
+        String returnDate = null;
+
+        Map<String, Object> map = new HashMap<>();
+        List<Book> books = new ArrayList<>();
+
         User user = userService.getById(userId);
-        String subject = "Receipt about picking up book!";
-        StringBuilder content = new StringBuilder("Dear " + user.getFirstname() + ",\n" +
-                "You picked up book/books. Here are receipts. Also be informed that the maximum time of taking books is 15 days.\n");
+
         for (Receipt receipt : receipts) {
-            User receiver = userService.getById(receipt.getUserId());
             Book book = getById(receipt.getBookId());
-            String receiptString  = "\nReceipt N " + receipt.getId() + "\n" +
-                    "Order date: " + DateFormat.getDateTimeInstance().format(receipt.getOrderDate()) + "\n" +
-                    "Expiration date: " + DateFormat.getDateTimeInstance().format(receipt.getExpirationDate()) + "\n" +
-                    "Book: \"" + book.getName() + "\", by " + book.getAuthors().get(0).getFirstname() + " " + book.getAuthors().get(0).getLastname() + "\n" +
-                    "User: " + receiver.getFirstname() + " " + receiver.getLastname() + "\n";
-            content.append(receiptString);
+
+            if (book != null) {
+                books.add(book);
+                returnDate = DateFormat.getDateInstance().format(book.getReturnDate());
+            }
+
+            receiptN += receipt.getId();
+            orderDate = DateFormat.getDateTimeInstance().format(receipt.getOrderDate());
+            expirationDate = DateFormat.getDateTimeInstance().format(receipt.getExpirationDate());
         }
+
+        map.put("user", user);
+        map.put("receiptNumber", receiptN);
+        map.put("orderDate", orderDate);
+        map.put("returnDate", returnDate);
+        map.put("pickedUp", DateFormat.getDateTimeInstance().format(System.currentTimeMillis()));
+        map.put("expirationDate", expirationDate);
+        map.put("books", books);
+
         log.info("Sending pick up and receipt email to user " + user);
-        mailSender.sendSimpleMessage(user.getEmail(), subject, String.valueOf(content));
+        try {
+            Context context = new Context();
+            context.setVariables(map);
+            mailSender.sendEmailUsingTemplate(user.getEmail(), "Receipt about picking up book!",
+                    "receipt-template", context);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
         log.info("Email sent.");
     }
 
+    @Transactional
     @Override
     public void doPickUp(Long userId) throws NotFoundException {
         log.info("Picking up book/books by user - id = " + userId);
@@ -275,22 +333,27 @@ public class BookServiceImpl implements BookService {
             book.setReservedUntil(null);
             book.setReturnDate(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 15);
             update(book);
+            long dateTimeMillis = System.currentTimeMillis();
             Receipt receipt = new Receipt(
-                    System.currentTimeMillis(),
-                    System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 15,
+                    dateTimeMillis,
+                    dateTimeMillis + 1000 * 60 * 60 * 24 * 15,
                     userId, book.getId(), ReceiptStatus.ACTIVE);
-            receiptService.save(receipt);
-            receipts.add(receipt);
+            Receipt savedReceipt = receiptService.save(receipt);
+            receipts.add(savedReceipt);
         }
         sendPickUpAndReceiptEmail(userId, receipts);
     }
 
+    @Transactional
     @Override
     public void doReturnBooks(Set<Book> books, Long userId) throws NotFoundException {
         log.info("Returning book/books by user - id = " + userId);
-        List<Receipt> receipts = new ArrayList<>();
         for (Book book : books) {
-            receipts.add(receiptService.getReceiptByBookIdAndUserIdAndReceiptStatus(book.getId(), book.getUsedBy(), ReceiptStatus.ACTIVE));
+            Receipt receipt = receiptService.getReceiptByBookIdAndUserIdAndReceiptStatus(book.getId(),
+                    book.getUsedBy(), ReceiptStatus.ACTIVE);
+            receipt.setReceiptStatus(ReceiptStatus.OUT_OF_USE);
+            receiptService.update(receipt);
+
             if (book.getReservedBy() != null)
                 book.setBookStatus(RESERVED);
             else
@@ -303,21 +366,27 @@ public class BookServiceImpl implements BookService {
             Notification notification = new Notification(System.currentTimeMillis(),notificationMessage, userId);
             notificationService.save(notification);
         }
-        sendEmailAboutReturnedBook(userId, receipts);
+        sendEmailAboutReturnedBook(userId, books);
     }
 
     @Override
-    public void sendEmailAboutReturnedBook(Long userId, List<Receipt> receipts) throws NotFoundException {
+    public void sendEmailAboutReturnedBook(Long userId, Set<Book> books) throws NotFoundException {
         User user = userService.getById(userId);
-        String subject = "Receipt about returning book!";
-        String content = "Dear " + user.getFirstname() + ",\n" +
-                "You returned book/books to Library.";
-        for (Receipt receipt : receipts) {
-            receipt.setReceiptStatus(ReceiptStatus.OUT_OF_USE);
-            receiptService.update(receipt);
+        String date = DateFormat.getDateTimeInstance().format(System.currentTimeMillis());
+        Map<String, Object> map = new HashMap<>();
+        map.put("date", date);
+        map.put("user", user);
+        map.put("books", books);
+
+        try {
+            Context context = new Context();
+            context.setVariables(map);
+            mailSender.sendEmailUsingTemplate(user.getEmail(), "Returned books!",
+                    "returned-books-template", context);
+        } catch (MessagingException e) {
+            e.printStackTrace();
         }
-        log.info("Sending email about returned book to user - " + user);
-        mailSender.sendSimpleMessage(user.getEmail(), subject, content);
+        log.info("Email sent.");
     }
 
     @Override

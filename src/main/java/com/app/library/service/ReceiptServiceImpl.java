@@ -6,7 +6,6 @@ import com.app.library.model.ReceiptStatus;
 import com.app.library.repository.ReceiptRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -80,7 +79,6 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Transactional
-    @Async
     @Override
     public Receipt save(Receipt receipt) {
         Receipt saved = receiptRepository.save(receipt);

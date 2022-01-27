@@ -9,12 +9,11 @@ import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.context.Context;
 
 import javax.mail.MessagingException;
 import java.util.*;
@@ -71,23 +70,12 @@ public class UserServiceImpl implements UserService {
     public void sendEmailAboutVerificationOfAccount(User user) {
         String link = "http://localhost:8080/verify?email=" + user.getEmail();
         String subject = "Account Verification";
-//        byte[] image = null;
-//        try {
-//            image = QRCodeGenerator.getQRCodeImage(link,250,250);
-//        } catch (WriterException | IOException e) {
-//            e.printStackTrace();
-//            log.error("Error creating QR code! " + e.getMessage());
-//        }
-//        String code = Base64.getEncoder().encodeToString(image);
-//        String qrcode = "data:image/jpeg;base64," + code;
-        String content = "<p>Dear, " + user.getFirstname() + "</p>"
-                + "<p>Please pass the verification by using <a href=\"" + link + "\">this link.</a> or just " +
-                "use the QR code for activating your account.</p>";
-//                + "<br><img src=\"" + qrcode +
-//                "\" height=\"250\" width=\"250\">";
         log.info("Sending email about verifying account!");
         try {
-            mailSender.sendEmailWithAttachments(user.getEmail(), subject, content);
+            Context context = new Context();
+            context.setVariable("name", user.getFirstname());
+            context.setVariable("url", link);
+            mailSender.sendEmailUsingTemplate(user.getEmail(), subject,"account-verification-template", context);
             log.info("Email sent to user email " + user.getEmail());
         } catch (MessagingException e) {
             log.error("Error occurred while sending an email to email " + user.getEmail() + ": " + e.getMessage());
@@ -163,16 +151,14 @@ public class UserServiceImpl implements UserService {
             user.setResetPasswordToken(token);
             Long creationDate = System.currentTimeMillis();
             user.setResetPasswordTokeCreationDate(creationDate);
+            String subject = "Reset password request";
             String link = "http://localhost:8080/reset_password?token=" + token;
-            String content = "<p>Hello, " + user.getFirstname() + "</p>"
-                    + "<p>You have requested to reset your password.</p>"
-                    + "<p>Click the link below to change your password:</p>"
-                    + "<p><a href=\"" + link + "\">Change my password</a></p>"
-                    + "<p>Ignore this email if you do remember your password, "
-                    + "or you have not made the request.</p>";
             update(user);
             try {
-                mailSender.sendEmailWithAttachments(user.getEmail(), "Reset password request", content);
+                Context context = new Context();
+                context.setVariable("name", user.getFirstname());
+                context.setVariable("url", link);
+                mailSender.sendEmailUsingTemplate(user.getEmail(), subject,"reset-password-template", context);
                 log.info("Message sent to email " + user.getEmail());
             } catch (MessagingException e) {
                 log.error("Can't send email to " + user.getEmail() + ": " + e.getMessage());

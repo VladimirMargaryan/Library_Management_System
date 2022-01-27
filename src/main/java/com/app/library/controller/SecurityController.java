@@ -39,7 +39,7 @@ public class SecurityController {
 	}
 
 	@PostMapping(value="/register/save")
-	public String saveNewAccount(User account, Model model) throws NotFoundException, MessagingException {
+	public String saveNewAccount(User account, Model model) {
 		User user = userService.getByEmail(account.getEmail());
 		if (user == null) {
 			userService.save(account);
