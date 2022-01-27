@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Returned Books</title>
+
+    <style>
+        .invoice-box {
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+        }
+
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+
+        .invoice-box table tr.heading td {
+            background: #dedede;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.item td {
+            border-bottom: 1px solid #eee;
+        }
+
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .invoice-box table tr.top table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+            .invoice-box table tr.information table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /** RTL **/
+        .invoice-box.rtl {
+            direction: rtl;
+            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+        .invoice-box.rtl table {
+            text-align: right;
+        }
+
+    </style>
+</head>
+
+<body>
+<br>
+<div class="invoice-box">
+    <div>
+        Dear <b th:text="${user.firstname}"></b>, You returned the following book/books to Library.
+    </div>
+    <br>
+    <table >
+        <tr >
+            <td style="margin-top: 200px">
+                <br>
+                <b>Full name:</b> <label th:text="${user.firstname + ' ' + user.lastname}"></label> <br/>
+                <b>Email:</b> <label th:text="${user.email}"></label> <br/>
+                <b>Phone:</b> <label th:text="${user.phone}"></label> <br>
+                <b>Returned:</b> <label th:text="${date}"></label>
+            </td>
+            <td class="title" style="text-align: right; margin-top: 100px">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT98rDSg9xcR-Aguw8R4HSdd-9kK-X9yVZuVaX1JD0vc9FYYsZHtY4jCbEgGAoAVaXHoU8&usqp=CAU" style="width: 100%; max-width: 150px" />
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <tr class="heading">
+            <td style="text-align: center">Book</td>
+            <td style="text-align: center">Author</td>
+            <td style="text-align: center">Release year</td>
+            <td style="text-align: center">Genre</td>
+            <td style="text-align: center">ISBN</td>
+        </tr>
+
+        <tr class="item" th:each="book : ${books}">
+            <td style="text-align: center" th:text="${book.name}"></td>
+            <td style="text-align: center" th:text="${book.authors.get(0).firstname + ' ' + book.authors.get(0).lastname}"></td>
+            <td style="text-align: center" th:text="${book.releaseYear}"></td>
+            <td style="text-align: center" th:text="${book.genre.value}"></td>
+            <td style="text-align: center" th:text="${book.isbn}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
