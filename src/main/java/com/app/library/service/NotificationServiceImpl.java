@@ -63,12 +63,14 @@ public class NotificationServiceImpl implements NotificationService {
             log.error("Notification by the id " + notification.getId() + " not found!");
             e.printStackTrace();
         }
-        assert newNotification != null;
-        newNotification.setCreationDate(notification.getCreationDate());
-        newNotification.setMessage(notification.getMessage());
-        newNotification.setReceiverId(notification.getReceiverId());
-        Notification updated = save(newNotification);
-        log.info("Notification updated! " + updated);
+        Notification updated = null;
+        if (newNotification != null){
+            newNotification.setCreationDate(notification.getCreationDate());
+            newNotification.setMessage(notification.getMessage());
+            newNotification.setReceiverId(notification.getReceiverId());
+            updated = save(newNotification);
+            log.info("Notification updated! " + updated);
+        }
         return updated;
     }
 }

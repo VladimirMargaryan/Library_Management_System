@@ -95,9 +95,11 @@
 <body>
 <br>
 <div class="invoice-box">
+    <!--/*@thymesVar id="user" type="com.app.library.model.User"*/-->
     <div>
         Dear <b th:text="${user.firstname}"></b>, You picked up book/books. Here is a receipt. <br>
         Also be informed that the maximum time of taking books is <b> 15 </b> days, and the return date is
+        <!--/*@thymesVar id="returnDate" type="java.lang.String"*/-->
         <b th:text="${returnDate}"></b>.
 
     </div>
@@ -106,9 +108,13 @@
         <tr class="top">
             <td style="text-align: left">
                 <br>
-                <b> Receipt N: </b> <label th:text="${receiptNumber}"></label> <br />
-                <b> Created: </b> <label th:text="${orderDate}"></label> <br />
-                <b> Due: </b> <label th:text="${expirationDate}"> </label>
+                <b> Receipt N: </b> <!--/*@thymesVar id="receiptNumber" type="java.lang.Long"*/-->
+                <label th:text="${receiptNumber}"></label> <br />
+                <b> Created: </b> <!--/*@thymesVar id="orderDate" type="java.lang.String"*/-->
+                <label th:text="${orderDate}"></label> <br />
+
+                <b> Due: </b> <!--/*@thymesVar id="expirationDate" type="java.lang.String"*/-->
+                <label th:text="${expirationDate}"> </label>
             </td>
             <td></td>
             <td></td>
@@ -121,10 +127,12 @@
         </tr>
         <tr class="information">
             <td>
-                <b>Full name:</b> <label th:text="${user.firstname + ' ' + user.lastname}"></label> <br/>
+                <b>Full name:</b>
+                <label th:text="${user.firstname + ' ' + user.lastname}"></label> <br/>
                 <b>Email:</b> <label th:text="${user.email}"></label> <br/>
                 <b>Phone:</b> <label th:text="${user.phone}"></label> <br>
-                <b>Picked up:</b> <label th:text="${pickedUp}"></label>
+                <b>Picked up:</b> <!--/*@thymesVar id="pickedUp" type="java.lang.String"*/-->
+                <label th:text="${pickedUp}"></label>
             </td>
             <td></td>
             <td></td>
@@ -142,6 +150,7 @@
             <td style="text-align: center">ISBN</td>
         </tr>
 
+        <!--/*@thymesVar id="books" type="java.util.List<com.app.library.model.Book>"*/-->
         <tr class="item" th:each="book : ${books}">
             <td style="text-align: center" th:text="${book.name}"></td>
             <td style="text-align: center" th:text="${book.authors.get(0).firstname + ' ' + book.authors.get(0).lastname}"></td>

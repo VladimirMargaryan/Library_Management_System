@@ -95,6 +95,7 @@
 <body>
 <br>
 <div class="invoice-box">
+    <!--/*@thymesVar id="user" type="com.app.library.model.User"*/-->
     <div>
         Dear <b th:text="${user.firstname}"></b>, You returned the following book/books to Library.
     </div>
@@ -106,7 +107,8 @@
                 <b>Full name:</b> <label th:text="${user.firstname + ' ' + user.lastname}"></label> <br/>
                 <b>Email:</b> <label th:text="${user.email}"></label> <br/>
                 <b>Phone:</b> <label th:text="${user.phone}"></label> <br>
-                <b>Returned:</b> <label th:text="${date}"></label>
+                <b>Returned:</b> <!--/*@thymesVar id="date" type="java.lang.String"*/-->
+                <label th:text="${date}"></label>
             </td>
             <td class="title" style="text-align: right; margin-top: 100px">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT98rDSg9xcR-Aguw8R4HSdd-9kK-X9yVZuVaX1JD0vc9FYYsZHtY4jCbEgGAoAVaXHoU8&usqp=CAU" style="width: 100%; max-width: 150px" />
@@ -123,6 +125,7 @@
             <td style="text-align: center">ISBN</td>
         </tr>
 
+        <!--/*@thymesVar id="books" type="java.util.List<com.app.library.model.Book>"*/-->
         <tr class="item" th:each="book : ${books}">
             <td style="text-align: center" th:text="${book.name}"></td>
             <td style="text-align: center" th:text="${book.authors.get(0).firstname + ' ' + book.authors.get(0).lastname}"></td>
