@@ -36,8 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/employee/**").hasRole("EMPLOYEE")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/login/**", "/register/**", "/verify/**", "/forgot_password/**",
-                        "/reset_password/**", "/logout/**", "/CSS/**", "/Images/**", "/js/**").permitAll()
-                .antMatchers("/**").authenticated()
+                        "/reset_password/**", "/logout/**", "/CSS/**", "/images/**", "/js/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -59,10 +59,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder);
     }
+
+
 }
