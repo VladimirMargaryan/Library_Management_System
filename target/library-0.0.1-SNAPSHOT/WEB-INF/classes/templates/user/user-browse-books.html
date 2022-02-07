@@ -3,10 +3,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Browse Books</title>
-<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/style.css}">
 </head>
 <body>
-<ul th:replace="page-layout :: userNavBar"></ul>
+<ul th:replace="page-layout :: userNavBar" th:fragment="${notifications}"></ul>
+<script th:src="@{js/script.js}"></script>
 	
 	<div class="container">
 		<h3>Make reservation</h3>

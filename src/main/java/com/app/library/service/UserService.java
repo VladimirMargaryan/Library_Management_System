@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import javax.mail.MessagingException;
-import java.util.Collection;
 import java.util.List;
 
 public interface UserService {

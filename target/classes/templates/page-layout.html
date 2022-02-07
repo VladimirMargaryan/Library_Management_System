@@ -3,34 +3,45 @@
 
 <head>
 <meta charset="ISO-8859-1">
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-
-<script>
-  let btns = document.querySelectorAll(".item");
-  Array.from(btns).forEach(item => {
-    item.addEventListener("click", () => {
-      let selected = document.getElementsByClassName("active");
-      selected[0].className = selected[0].className.replace(" active", "");
-      item.className += " active";
-    });
-  });
-
-  function makeActive() {
-    let element = document.getElementById("text");
-    element.classList.add("active");
-    element.innerHTML="This is Active";
-  }
-</script>
-
-<ul th:fragment="userNavBar" >
+<!--/*@thymesVar id="notifications" type="java.util.List<com.app.library.model.Notification>"*/-->
+<ul th:fragment="userNavBar">
   <li class="navigation"><a class="item" th:href="@{/user}">Home</a></li>
   <li class="navigation"><a class="item" th:href="@{/user/yourbooks}">Your Books</a></li>
   <li class="navigation"><a class="item" th:href="@{/user/browsebooks}">Browse Books</a></li>
   <li class="navigation"><a class="item" th:href="@{/user/yourreservations}">Your Reservations</a></li>
   <li class="navigation"><a class="item" th:href="@{/user/FAQ}">FAQ</a></li>
   <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+  <li style="float: right">
+    <input type="checkbox" name="" class="btn1" />
+      <div class="box">
+        <div class="header">
+          <p>Notifications: <span class="size" th:text="${notifications.size()}"></span></p>
+        </div>
+        <div class="content">
+          <div th:each="notification : ${notifications}">
+            <div class="notification">
+              <img th:src="@{~/images/pngaaa.png}" alt="img"/>
+              <div class="text">
+                <h5 th:text="${#dates.format(notification.creationDate, 'dd-MMM-yyyy HH:mm')}"></h5>
+                <p th:text="${notification.message}"></p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </li>
 </ul>
+
 
 
 <ul th:fragment="employeeNavBar" >
@@ -41,14 +52,54 @@
   <li class="navigation"><a class="item" th:href="@{/employee/returnedbooks}">Return Books</a></li>
   <li class="navigation"><a class="item" th:href="@{/employee/reservations}">Process Reservations</a></li>
   <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+  <li style="float: right">
+    <input type="checkbox" name="" class="btn1" />
+    <div class="box">
+      <div class="header">
+        <p>Notifications: <span class="size" th:text="${notifications.size()}"></span></p>
+      </div>
+      <div class="content">
+        <div th:each="notification : ${notifications}">
+          <div class="notification">
+            <img th:src="@{~/images/pngaaa.png}" alt="img"/>
+            <div class="text">
+              <h5 th:text="${#dates.format(notification.creationDate, 'dd-MMM-yyyy HH:mm')}"></h5>
+              <p th:text="${notification.message}"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </li>
+
 </ul>
 
 <ul th:fragment="adminNavBar" >
   <li class="navigation"><a class="item" th:href="@{/admin}">Home</a></li>
   <li class="navigation"><a class="item" th:href="@{/admin/manageaccounts}">Manage Accounts</a></li>
   <li style="float:right"><a class="active" href="/logout">Logout</a></li>
-</ul>
+  <li style="float: right">
+    <input type="checkbox" name="" class="btn1" />
+    <div class="box">
+      <div class="header">
+        <p>Notifications: <span class="size" th:text="${notifications.size()}"></span></p>
+      </div>
+      <div class="content">
+        <div th:each="notification : ${notifications}">
+          <div class="notification">
+            <img th:src="@{~/images/pngaaa.png}" alt="img"/>
+            <div class="text">
+              <h5 th:text="${#dates.format(notification.creationDate, 'dd-MMM-yyyy HH:mm')}"></h5>
+              <p th:text="${notification.message}"></p>
+            </div>
+          </div>
 
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
 
 </body>
 </html>

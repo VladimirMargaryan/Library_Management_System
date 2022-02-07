@@ -41,16 +41,13 @@ public class EmployeeController {
 	private Util util;
 
 	@GetMapping
-	public String employeeHomePage(@RequestParam (required = false) Optional<Integer> pageOfNotifications,
-								   Model model) {
+	public String employeeHomePage(Model model) {
 
 		User user = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 
-		Page<Notification> notificationPage = notificationService.getAllByUserId(user.getId(),
-				PageRequest.of(pageOfNotifications.orElse(1) - 1, 5));
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
 
-		model.addAttribute("notificationPageNumbers", util.pageNumbers(notificationPage));
-		model.addAttribute("notificationPage", notificationPage);
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("user", user);
 		return"employee/employee-home";
 	}
@@ -72,6 +69,10 @@ public class EmployeeController {
 		else
 			userPage = userService.getAll(userPagePageable);
 
+		User user = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("pageNumbers", util.pageNumbers(userPage));
 		model.addAttribute("userPage", userPage);
 		model.addAttribute("keyword", keyword);
@@ -89,6 +90,10 @@ public class EmployeeController {
 
 		Page<Book> reservedBookPage = bookService.getAllByReservedBy(user.getId(), PageRequest.of(reservedBooksPage.orElse(1) - 1, 5));
 
+		User userNotify = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		List<Notification> notifications = notificationService.getAllByUserId(userNotify.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("usedBooksPageNumbers", util.pageNumbers(bookPage));
 		model.addAttribute("reservedBooksPageNumbers", util.pageNumbers(reservedBookPage));
 		model.addAttribute("bookPage", bookPage);
@@ -127,6 +132,10 @@ public class EmployeeController {
 				booksUsers.put(book.getUsedBy(), userService.getById(book.getUsedBy()));
 		}
 
+		User user = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("pageNumbers", util.pageNumbers(bookPage));
 		model.addAttribute("bookPage", bookPage);
 		model.addAttribute("booksUsers", booksUsers);
@@ -138,6 +147,10 @@ public class EmployeeController {
 
 	@GetMapping(value="/books/newbook")
 	public String newBook(Model model) {
+		User user = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("book", new Book());
 		model.addAttribute("author", new Author());
 		return "employee/employee-new-book";
@@ -188,6 +201,11 @@ public class EmployeeController {
 			currentUser = userService.getById(book.getUsedBy());
 		if (book.getReservedBy() != null)
 			reservedUser = userService.getById(book.getReservedBy());
+
+		User user = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("book", book);
 		model.addAttribute("author", author);
 		model.addAttribute("currentUser", currentUser);
@@ -267,6 +285,10 @@ public class EmployeeController {
 		Page<Book> bookPage = bookService.getAllByBookStatusAndReservedBy(BookStatus.READY_FOR_PICK_UP, userId, bookPagePageable);
 
 
+		User userNotify = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		List<Notification> notifications = notificationService.getAllByUserId(userNotify.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("pageNumbers", util.pageNumbers(userPage));
 		model.addAttribute("bookPageNumbers", util.pageNumbers(bookPage));
 		model.addAttribute("searchedBookPageNumbers", util.pageNumbers(searchedBookPage));
@@ -369,6 +391,10 @@ public class EmployeeController {
 		if (selectedBooksOfUser.getContent().isEmpty() && currentSelectedBooksPage - 2 >= 0)
 			selectedBooksOfUser = bookService.findPaginated(PageRequest.of(currentSelectedBooksPage - 2, 5), selectedBooks);
 
+		User userNotify = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		List<Notification> notifications = notificationService.getAllByUserId(userNotify.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("selectedBookIdsInString", selectedBookIdsInString);
 		model.addAttribute("userPage", userPage);
 		model.addAttribute("userPageNumbers", util.pageNumbers(userPage));
@@ -436,6 +462,10 @@ public class EmployeeController {
 		int currentProcessedPage = processedPage.orElse(1);
 		Page<ListEntry<Book, User>> selectedBooksOfUser = bookService.findPaginated(PageRequest.of(currentProcessedPage - 1, 5), usersAndProcessedReservations);
 
+		User user = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("unprocessedReservations", unprocessedReservations);
 		model.addAttribute("booksOfUSer", booksOfUSer);
 		model.addAttribute("booksOfUSerPageNumbers", util.pageNumbersMap(booksOfUSer));

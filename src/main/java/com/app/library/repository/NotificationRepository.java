@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
 
-    Page<Notification> getNotificationsByReceiverIdOrderByCreationDateDesc(Long receiverId, Pageable pageable);
+    List<Notification> getNotificationsByReceiverIdOrderByCreationDateDesc(Long receiverId);
 }

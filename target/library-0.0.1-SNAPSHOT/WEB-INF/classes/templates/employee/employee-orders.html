@@ -3,11 +3,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Orders</title>
-</head>
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style.css}">
+
+</head>
 <body>
-	
-	<ul th:replace="page-layout :: employeeNavBar"></ul>
+<ul th:replace="page-layout :: employeeNavBar" th:fragment="${notifications}"></ul>
+<script th:src="@{js/script.js}"></script>
 	
 		<div class="container">
 			

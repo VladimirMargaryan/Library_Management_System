@@ -10,7 +10,7 @@ import java.util.List;
 public interface NotificationService {
 
     List<Notification> getAll();
-    Page<Notification> getAllByUserId(Long id, Pageable pageable);
+    List<Notification> getAllByUserId(Long id);
     Notification getById(Long id) throws NotFoundException;
     Notification save(Notification notification);
     void removeById(Long id);

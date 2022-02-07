@@ -26,8 +26,8 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public Page<Notification> getAllByUserId(Long id, Pageable pageable) {
-        return notificationRepository.getNotificationsByReceiverIdOrderByCreationDateDesc(id, pageable);
+    public List<Notification> getAllByUserId(Long id) {
+        return notificationRepository.getNotificationsByReceiverIdOrderByCreationDateDesc(id);
     }
 
 

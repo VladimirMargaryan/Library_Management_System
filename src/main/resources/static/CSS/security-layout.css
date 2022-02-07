@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 body {
-    background: url("/Images/library.jpg") no-repeat center center fixed;
+    background: url("/images/library.jpg") no-repeat center center fixed;
     background-size: cover;
     font-family: Helvetica, sans-serif;
 }

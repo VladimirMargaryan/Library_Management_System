@@ -2,7 +2,6 @@ package com.app.library.controller;
 
 import com.app.library.exception.*;
 import com.app.library.model.*;
-import com.app.library.service.AuthorService;
 import com.app.library.service.BookService;
 import com.app.library.service.NotificationService;
 import com.app.library.service.UserService;
@@ -17,22 +16,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.*;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
-
     @Autowired
     private UserService userService;
 
     @Autowired
     private BookService bookService;
-
-	@Autowired
-	private AuthorService authorService;
 
 	@Autowired
 	private NotificationService notificationService;
@@ -42,13 +36,11 @@ public class UserController {
 
 	@GetMapping
 	public String userHome(@RequestParam (required = false) Optional<Integer> pageOfBooks,
-						   @RequestParam (required = false) Optional<Integer> pageOfNotifications,
-						   Model model) throws NotFoundException {
+						   Model model) {
 
         User user = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 
-		Page<Notification> notificationPage = notificationService.getAllByUserId(user.getId(),
-				PageRequest.of(pageOfNotifications.orElse(1) - 1, 10));
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
 
 		Page<Book> bookPage = bookService.getBooksByUserIdAndWithExpirationDate(
 				user.getId(),
@@ -57,19 +49,20 @@ public class UserController {
 
 		model.addAttribute("bookPage", bookPage);
 		model.addAttribute("bookPageNumbers", util.pageNumbers(bookPage));
-		model.addAttribute("notificationPage", notificationPage);
-		model.addAttribute("notificationPageNumbers", util.pageNumbers(notificationPage));
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("user", user);
 		return "user/user-home";
 	}
 
     @GetMapping(value="/yourbooks")
 	public String yourBooks(@RequestParam (required = false) Optional<Integer> page,
-							Model model) throws NotFoundException {
+							Model model) {
 
 		User user = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 		Page<Book> bookPage = bookService.getAllByUsedBy(user.getId(), PageRequest.of(page.orElse(1) - 1, 5));
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
 
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("bookPage", bookPage);
 		model.addAttribute("pageNumbers", util.pageNumbers(bookPage));
 		return "user/user-your-books";
@@ -100,6 +93,9 @@ public class UserController {
 		else
 			bookPage = bookService.getAll(bookPagePageable);
 
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("bookPage", bookPage);
 		model.addAttribute("pageNumbers", util.pageNumbers(bookPage));
 		model.addAttribute("keyword", keyword);
@@ -135,7 +131,11 @@ public class UserController {
 
 
 	@GetMapping(value="/FAQ")
-	public String FAQ() {
+	public String FAQ(Model model) {
+		User user = userService.getByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
+
+		model.addAttribute("notifications", notifications);
 		return "user/user-FAQ";
 	}
 
@@ -161,6 +161,9 @@ public class UserController {
 
 		Page<Book> bookPage = bookService.getAllByReservedBy(user.getId(), bookPageable);
 
+		List<Notification> notifications = notificationService.getAllByUserId(user.getId());
+
+		model.addAttribute("notifications", notifications);
 		model.addAttribute("bookPage", bookPage);
 		model.addAttribute("sortBy", sortBy);
 		model.addAttribute("pageNumbers", util.pageNumbers(bookPage));

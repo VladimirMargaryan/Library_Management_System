@@ -4,9 +4,12 @@
 <meta charset="ISO-8859-1">
 <title>Manage accounts</title>
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/style.css}">
 </head>
 <body>
-	<ul th:replace="page-layout :: adminNavBar"></ul>
+
+<ul th:replace="page-layout :: adminNavBar" th:fragment="${notificationPage}"></ul>
+<script th:src="@{js/script.js}"></script>
 	
 	<div class="container">
 		<h3>Manage Accounts</h3>	
