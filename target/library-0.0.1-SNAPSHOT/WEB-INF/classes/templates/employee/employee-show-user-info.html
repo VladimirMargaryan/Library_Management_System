@@ -4,12 +4,17 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/CSS/style.css}">
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+			integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+	/>
 
 </head>
 <body>
 <ul th:replace="page-layout :: employeeNavBar" th:fragment="${notifications}"></ul>
-<script th:src="@{js/script.js}"></script>
 
 		<div class="container">
 			<h3>User info</h3>
