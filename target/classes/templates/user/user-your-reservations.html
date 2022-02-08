@@ -24,6 +24,7 @@
 		<table th:if="${bookPage.content.size() > 0}" id="tablestyle" class="css-serial">
 			<tr>
 				<th>#</th>
+				<th>Cover image</th>
 				<th><a th:href="@{/user/yourreservations(sortBy='name')}" style="display:block; color: white">Title</a></th>
 				<th><a th:href="@{/user/yourreservations(sortBy='authors.firstname')}" style="display:block; color: white">Author</a></th>
 				<th><a th:href="@{/user/yourreservations(sortBy='releaseYear')}" style="display:block; color: white">Release Year</a></th>
@@ -33,6 +34,7 @@
 			</tr>
 			<tr th:each="book : ${bookPage.content}">
 				<td></td>
+				<td><img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="tableBook" /></td>
 				<td th:text="${book.name}"></td>
 				<td th:text="${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}"></td>
 				<td th:text="${book.releaseYear}"></td>

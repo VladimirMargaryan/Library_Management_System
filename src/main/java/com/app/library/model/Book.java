@@ -39,6 +39,9 @@ public class Book {
     @NotNull
     private Long isbn;
 
+    @Column(name = "photo", columnDefinition = "LONGTEXT")
+    private String photo;
+
     @Column(name = "bookStatus")
     @NotNull
     @Enumerated(EnumType.STRING)

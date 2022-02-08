@@ -172,6 +172,7 @@ button[type=button] {
 }
 
 #tablestyle td, #tablestyle th {
+  text-align: center;
   border: 1px solid #ddd;
   padding: 8px;
   font-size: 12px
@@ -251,10 +252,10 @@ input[type=submit].table {
 }
 .header{
   width: 100%;
-  height: 75px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
-  /*padding: 0.6em 1em;*/
+  padding: 0.6em 1em;
   border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
 
@@ -266,6 +267,16 @@ input[type=submit].table {
 }
 .content{
   width: 100%;
+}
+
+.bookImage{
+  width: 110px;
+  height: 160px;
+}
+
+.tableBook{
+  width: 70px;
+  height: 100px;
 }
 .notification{
   width: auto;

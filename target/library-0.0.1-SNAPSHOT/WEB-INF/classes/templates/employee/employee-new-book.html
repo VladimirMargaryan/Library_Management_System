@@ -22,6 +22,15 @@
 
 			<form th:action="@{/employee/books/save}" th:object="${book}" method="POST">
 				<div class="row">
+					<div class="col-50">
+						<label for="photo">Photo</label>
+					</div>
+
+					<div class="col-75">
+						<input type="file" id="photo" name="image" accept="image/png, image/jpeg" >
+					</div>
+				</div>
+				<div class="row">
 					<div class="col-50">					
 						<label for="title">Title</label>
 					</div>

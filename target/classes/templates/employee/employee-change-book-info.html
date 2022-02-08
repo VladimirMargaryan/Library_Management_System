@@ -17,10 +17,21 @@
 
 	<div class="container">
 		<h3>Change book information</h3>
-		
-		
-		<form th:action="@{/employee/books/savebookchange}" th:object="${book}" th:method="PUT">
 
+
+		<form th:action="@{/employee/books/savebookchange}" th:object="${book}" th:method="PUT" enctype="multipart/form-data">
+
+			<div class="row">
+				<div class="col-50">
+					<label for="photo">Photo:</label>
+				</div>
+
+				<div class="col-75">
+					<img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="bookImage" />
+						<input type="file" id="photo" name="file" accept="image/png, image/jpeg"/>
+				</div>
+			</div>
+			<br>
 			<div class="row">
 				<div class="col-50">
 					<Label>Title: </Label>

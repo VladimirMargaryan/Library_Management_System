@@ -119,6 +119,7 @@
 				<table id="tablestyle" class="css-serial">
 					<tr>
 						<th>#</th>
+						<th>Cover image</th>
 						<th><a th:href="@{/employee/orders(bookKeyword=${bookKeyword}, sortBy='name', userId=${userId})}" style="display:block; color: white">Title</a></th>
 						<th><a th:href="@{/employee/orders(bookKeyword=${bookKeyword}, sortBy='authors.firstname', userId=${userId})}" style="display:block; color: white">Author</a></th>
 						<th><a th:href="@{/employee/orders(bookKeyword=${bookKeyword}, sortBy='releaseYear', userId=${userId})}" style="display:block; color: white">Release Year</a></th>
@@ -128,6 +129,7 @@
 					</tr>
 					<tr th:each="book : ${bookPage.content}">
 						<td></td>
+						<td><img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="tableBook" /></td>
 						<td th:text="${book.name}"></td>
 						<td th:text="${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}"></td>
 						<td th:text="${book.releaseYear}"></td>
@@ -191,6 +193,7 @@
 				<table id="tablestyle" class="css-serial">
 					<tr>
 						<th>#</th>
+						<th>Cover image</th>
 						<th><a th:href="@{/employee/orders(bookKeyword=${bookKeyword}, sortBy='name', userId=${userId})}" style="display:block; color: white">Title</a></th>
 						<th><a th:href="@{/employee/orders(bookKeyword=${bookKeyword}, sortBy='authors.firstname', userId=${userId})}" style="display:block; color: white">Author</a></th>
 						<th><a th:href="@{/employee/orders(bookKeyword=${bookKeyword}, sortBy='releaseYear', userId=${userId})}" style="display:block; color: white">Release Year</a></th>
@@ -201,6 +204,7 @@
 					</tr>
 					<tr th:each="searchedBook : ${searchedBookPage.content}">
 						<td></td>
+						<td><img th:src="${'data:image/jpeg;base64,'+ searchedBook.photo}" alt="No Image" class="tableBook" /></td>
 						<td th:text="${searchedBook.name}"></td>
 						<td th:text="${searchedBook.getAuthors().get(0).firstname + ' ' + searchedBook.getAuthors().get(0).lastname}"></td>
 						<td th:text="${searchedBook.releaseYear}"></td>

@@ -10,7 +10,17 @@
 		<h3>Set book reservation to ready for pick-up</h3>
 		<p>Are you sure?</p>
 		<p>You are about to set this book's status to ready for pick-up:</p>
-		
+		<div class="row">
+			<div class="col-50">
+				<label>Photo:</label>
+			</div>
+
+			<div class="col-75">
+				<img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="bookImage" />
+			</div>
+		</div>
+		<br>
+
 		<div class="row">
 			<div class="col-50">
 				Title:

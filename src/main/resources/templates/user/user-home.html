@@ -32,6 +32,7 @@
 			<table id="tablestyle" class="css-serial">
 				<tr>
 					<th>#</th>
+					<th>Cover image</th>
 					<th>Title</th>
 					<th>Author</th>
 					<th>Release year</th>
@@ -41,6 +42,7 @@
 				</tr>
 				<tr th:each="book : ${bookPage.content}">
 					<td></td>
+					<td><img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="tableBook" /></td>
 					<td th:text="${book.name}"></td>
 					<td th:text="${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}"></td>
 					<td th:text="${book.releaseYear}"></td>

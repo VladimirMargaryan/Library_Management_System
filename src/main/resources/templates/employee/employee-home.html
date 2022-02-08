@@ -21,29 +21,5 @@
 		<h2 th:text="${'Welcome' + ' ' + user.getFirstname() + ' ' + user.getLastname()}"></h2>
 	</div>
 	
-<!--	<div class="container">-->
-<!--		<h3>Notifications</h3>-->
-<!--		-->
-<!--		<div th:if="${notificationPage.content.size() == 0}">-->
-<!--			<p>There are no notifications.</p>-->
-<!--		</div>-->
-<!--				-->
-<!--		<div th:if="${notificationPage.content.size() > 0}">-->
-<!--			<div class="row" th:each="notification : ${notificationPage.content}">-->
-<!--				<div class="col-25" style="width: 13%">-->
-<!--					<text th:text="${#dates.format(notification.creationDate, 'dd-MMM-yyyy HH:mm')}"></text>-->
-<!--				</div>-->
-<!--				<div class="col-75" style="width: 87%">-->
-<!--					<text th:text="${notification.message}"></text>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--			<br>-->
-<!--			<div th:if="${notificationPage.totalPages > 0}" class="pagination" th:each="notificationPageNumber : ${notificationPageNumbers}">-->
-<!--				<a th:href="@{/employee(pageOfNotifications=${notificationPageNumber})}"-->
-<!--				   th:text="${notificationPageNumber}"-->
-<!--				   th:class="${notificationPageNumber==notificationPage.number + 1} ? active"></a>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
 </body>
 </html>

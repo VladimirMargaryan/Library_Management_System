@@ -136,10 +136,11 @@ public class BookServiceImpl implements BookService {
     @Transactional
     @Override
     public Book update(Book book) throws NotFoundException {
-        Book newBook = getById(book.getId());;
+        Book newBook = getById(book.getId());
         newBook.setName(book.getName());
         newBook.setGenre(book.getGenre());
         newBook.setIsbn(book.getIsbn());
+        newBook.setPhoto(book.getPhoto());
         newBook.setReleaseYear(book.getReleaseYear());
         newBook.setBookStatus(book.getBookStatus());
         newBook.setUsedBy(book.getUsedBy());

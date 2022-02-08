@@ -114,6 +114,7 @@
 			<table id="tablestyle" class="css-serial" th:if="${booksOfUSer.content.size() > 0}">
 				<tr>
 					<th>#</th>
+					<th>Cover image</th>
 					<th>Title</th>
 					<th>Author</th>
 					<th>Release Year</th>
@@ -124,6 +125,7 @@
 				</tr>
 				<tr th:each="book : ${booksOfUSer.content}">
 					<td></td>
+					<td><img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="tableBook" /></td>
 					<td th:text="${book.name}"></td>
 					<td th:text="${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}"></td>
 					<td th:text="${book.releaseYear}"></td>
@@ -161,6 +163,7 @@
 			<table id="tablestyle" class="css-serial">
 				<tr>
 					<th>#</th>
+					<th>Cover image</th>
 					<th>Title</th>
 					<th>Author</th>
 					<th>Release Year</th>
@@ -171,6 +174,7 @@
 				</tr>
 				<tr th:each="selectedBook : ${selectedBooksOfUser.content}">
 					<td></td>
+					<td><img th:src="${'data:image/jpeg;base64,'+ selectedBook.photo}" alt="No Image" class="tableBook" /></td>
 					<td th:text="${selectedBook.name}"></td>
 					<td th:text="${selectedBook.authors.get(0).firstname + ' ' + selectedBook.authors.get(0).lastname}"></td>
 					<td th:text="${selectedBook.releaseYear}"></td>

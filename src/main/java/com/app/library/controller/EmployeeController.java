@@ -1,5 +1,6 @@
 package com.app.library.controller;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -10,6 +11,7 @@ import com.app.library.service.AuthorService;
 import com.app.library.service.BookService;
 import com.app.library.service.NotificationService;
 import com.app.library.service.UserService;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -120,7 +123,7 @@ public class EmployeeController {
 		if (sortBy == null || sortBy.isEmpty())
 			sortBy = "id";
 
-		Pageable bookPageable = PageRequest.of(page.orElse(1) - 1, 10, Sort.by(sortBy));
+		Pageable bookPageable = PageRequest.of(page.orElse(1) - 1, 5, Sort.by(sortBy));
 
 		if (keyword != null && !keyword.isEmpty())
 			bookPage = bookService.search(keyword, bookPageable);
@@ -157,7 +160,19 @@ public class EmployeeController {
 	}
 
 	@PostMapping(value="/books/save")
-	public String saveBook(Book book, Author author, Model model) {
+	public String saveBook(Book book,
+						   Author author,
+						   @RequestParam("file") MultipartFile file,
+						   Model model) {
+		String photo = null;
+		if (file != null && !file.isEmpty()) {
+			try {
+				photo = Base64.encodeBase64String(file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		book.setPhoto(photo);
 		Author bookAuthor = authorService.save(author);
 		Book book1 = bookService.save(book, bookAuthor);
 		if (book1 == null){
@@ -215,11 +230,21 @@ public class EmployeeController {
 
 	@PutMapping(value="/books/savebookchange")
 	public String updateBookInfo(Author author,
+								 @RequestParam(value = "file", required = false) MultipartFile file,
 								 Book book) throws NotFoundException {
 		Author bookAuthor = authorService.save(author);
 		List<Author> authors = new ArrayList<>();
 		authors.add(bookAuthor);
 		book.setAuthors(authors);
+		String photo = null;
+		if (file != null && !file.isEmpty()) {
+			try {
+				photo = Base64.encodeBase64String(file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		book.setPhoto(photo);
 		bookService.update(book);
 		return "redirect:/employee/books/bookinfochanged";
 	}
