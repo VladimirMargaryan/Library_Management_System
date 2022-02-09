@@ -2,7 +2,6 @@ com/app/library/exception/BadRequestException.class
 com/app/library/model/User.class
 com/app/library/model/BookGenre.class
 com/app/library/service/BookServiceImpl.class
-com/app/library/mail/TemplateEngineConfig.class
 com/app/library/model/UserStatus.class
 com/app/library/controller/ErrorPagesController.class
 com/app/library/service/RoleService.class
@@ -22,6 +21,7 @@ com/app/library/controller/SecurityController.class
 com/app/library/exception/UsernameOrPasswordIncorrectException.class
 com/app/library/controller/ForgotPasswordController.class
 com/app/library/model/ReceiptStatus.class
+com/app/library/config/TemplateEngineConfig.class
 com/app/library/service/UserServiceImpl.class
 com/app/library/LibraryApplication.class
 com/app/library/service/ReceiptService.class

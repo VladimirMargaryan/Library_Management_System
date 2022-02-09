@@ -16,6 +16,8 @@
 <body>
 <ul th:replace="page-layout :: employeeNavBar" th:fragment="${notifications}"></ul>
 
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+
 		<div class="container">
 			
 				<div th:if="${userId == null}">		
@@ -136,8 +138,6 @@
 						<form th:action="@{/employee/returnedbooks}" method="GET" th:object="${form}">
 							<input type="submit" value="Select book" class="table">
 							<input type="hidden" th:value="${book.id}" name="selectedBookId">
-<!--							<input type="hidden" th:value="${booksOfUSer.content}" th:field="${form.books}">-->
-<!--							<input type="hidden" th:value="${selectedBooksOfUser.content}" th:field="${form.bookSet}">-->
 							<input type="hidden" th:value="${user.id}" name="userId">
 							<input type="hidden" th:value="${selectedBookIdsInString}" name="selectedBookIdsInString">
 							<input type="hidden" th:value="${booksOfUSer.number + 1}" name="inUseBookPage">

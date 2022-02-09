@@ -16,6 +16,8 @@
 
 	<ul th:replace="page-layout :: adminNavBar" th:fragment="${notificationPage}"></ul>
 
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+
 	<div class="container">
 		<h2 th:text="${'Welcome' + ' ' + user.firstname + ' ' + user.lastname}"></h2>
 	</div>

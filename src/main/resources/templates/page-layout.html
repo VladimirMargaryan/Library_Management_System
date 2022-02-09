@@ -13,13 +13,13 @@
 </head>
 <body>
 <!--/*@thymesVar id="notifications" type="java.util.List<com.app.library.model.Notification>"*/-->
-<ul th:fragment="userNavBar">
+<ul th:fragment="userNavBar" id="menuList" class="nav">
   <li class="navigation"><a class="item" th:href="@{/user}">Home</a></li>
   <li class="navigation"><a class="item" th:href="@{/user/yourbooks}">Your Books</a></li>
   <li class="navigation"><a class="item" th:href="@{/user/browsebooks}">Browse Books</a></li>
   <li class="navigation"><a class="item" th:href="@{/user/yourreservations}">Your Reservations</a></li>
   <li class="navigation"><a class="item" th:href="@{/user/FAQ}">FAQ</a></li>
-  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+  <li style="float:right"><a href="/logout" style="background-color: #4CAF50; color: white; border-radius: 5px">Logout</a></li>
   <li style="float: right">
     <input type="checkbox" name="" class="btn1" />
       <div class="box">
@@ -43,7 +43,6 @@
 </ul>
 
 
-
 <ul th:fragment="employeeNavBar" >
   <li class="navigation"><a class="item" th:href="@{/employee}">Home</a></li>
   <li class="navigation"><a class="item" th:href="@{/employee/users/showusers}">Users</a></li>
@@ -51,7 +50,7 @@
   <li class="navigation"><a class="item" th:href="@{/employee/orders}">Place Order</a></li>
   <li class="navigation"><a class="item" th:href="@{/employee/returnedbooks}">Return Books</a></li>
   <li class="navigation"><a class="item" th:href="@{/employee/reservations}">Process Reservations</a></li>
-  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+  <li style="float:right"><a href="/logout" style="background-color: #4CAF50; color: white; border-radius: 5px">Logout</a></li>
   <li style="float: right">
     <input type="checkbox" name="" class="btn1" />
     <div class="box">
@@ -78,7 +77,7 @@
 <ul th:fragment="adminNavBar" >
   <li class="navigation"><a class="item" th:href="@{/admin}">Home</a></li>
   <li class="navigation"><a class="item" th:href="@{/admin/manageaccounts}">Manage Accounts</a></li>
-  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+  <li style="float:right"><a href="/logout" style="background-color: #4CAF50; color: white; border-radius: 5px">Logout</a></li>
   <li style="float: right">
     <input type="checkbox" name="" class="btn1" />
     <div class="box">

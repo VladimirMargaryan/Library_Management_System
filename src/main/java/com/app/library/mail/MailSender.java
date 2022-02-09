@@ -13,6 +13,8 @@ import org.thymeleaf.context.Context;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
+import java.util.List;
 
 @Component("mailSenderClient")
 public class MailSender {
@@ -40,11 +42,18 @@ public class MailSender {
     }
 
     @Async
-    public void sendEmailWithAttachments(String to, String subject, String text) throws MessagingException {
+    public void sendEmailWithAttachments(String to, String subject, String text, List<File> files) throws MessagingException {
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo(to);
         helper.setSubject(subject);
+        files.forEach(file -> {
+            try {
+                helper.addAttachment(file.getName(), file);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+        });
         helper.setText(text, true);
         emailSender.send(message);
     }

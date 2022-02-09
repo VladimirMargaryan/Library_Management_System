@@ -1,15 +1,5 @@
-let box  = document.getElementById('box');
-let down = false;
-
-
-function toggleNotify(){
-    if (down) {
-        box.style.height  = '0px';
-        box.style.opacity = '0';
-        down = false;
-    }else {
-        box.style.height  = '510px';
-        box.style.opacity = '1';
-        down = true;
+for (let i = 0; i < document.links.length; i++) {
+    if (document.links[i].href === document.URL) {
+        document.links[i].className = 'active';
     }
 }

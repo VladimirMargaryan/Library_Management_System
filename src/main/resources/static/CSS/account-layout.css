@@ -22,7 +22,6 @@ body {
 }
 
 
-
 /* ----------------------- NAVIGATION BAR ----------------------- */
 
 ul {
@@ -49,12 +48,14 @@ li a {
   color: black;
   text-align: center;
   padding: 20px 16px 60px;
-  text-decoration: none;
+  text-decoration-line: none;
 }
 
+
 .active {
-  background-color:#6dae67;
+  background-color:#4CAF50;
   color: white;
+  border-radius: 5px;
 }
 
 /* ----------------------------- FORMS ----------------------------- */
@@ -151,11 +152,6 @@ button[type=button] {
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
 .navigation a:hover:not(.active){background-color: #ddd;}
-.navigation a.active{
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-}
 
 .row:after {
   content: "";
@@ -175,7 +171,7 @@ button[type=button] {
   text-align: center;
   border: 1px solid #ddd;
   padding: 8px;
-  font-size: 12px
+  font-size: 14px
 }
 
 #tablestyle tr:nth-child(even){background-color: #f2f2f2;}

@@ -164,15 +164,15 @@ public class EmployeeController {
 						   Author author,
 						   @RequestParam("file") MultipartFile file,
 						   Model model) {
-		String photo = null;
+
 		if (file != null && !file.isEmpty()) {
 			try {
-				photo = Base64.encodeBase64String(file.getBytes());
+				book.setPhoto(Base64.encodeBase64String(file.getBytes()));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		book.setPhoto(photo);
+
 		Author bookAuthor = authorService.save(author);
 		Book book1 = bookService.save(book, bookAuthor);
 		if (book1 == null){
@@ -236,15 +236,14 @@ public class EmployeeController {
 		List<Author> authors = new ArrayList<>();
 		authors.add(bookAuthor);
 		book.setAuthors(authors);
-		String photo = null;
+
 		if (file != null && !file.isEmpty()) {
 			try {
-				photo = Base64.encodeBase64String(file.getBytes());
+				book.setPhoto(Base64.encodeBase64String(file.getBytes()));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		book.setPhoto(photo);
 		bookService.update(book);
 		return "redirect:/employee/books/bookinfochanged";
 	}
