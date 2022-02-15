@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+			integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+	/>
+</head>
+<body>
+<ul th:replace="page-layout :: userNavBar" th:fragment="${notifications}"></ul>
+
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+<div class="container">
+	<h2 th:text="${'Welcome' + ' ' + user.firstname + ' ' + user.lastname}"></h2>
+	<div th:if="${user.getStatus().toString() == 'BLOCKED'}">
+		<p>You are blocked and can't reserve book!</p>
+	</div>
+	</div>
+
+	<div class="container" th:if="${bookPage.content.size() > 0}">
+
+		<div th:if="${bookPage.content.size() > 0}">
+			<p style="color: red">WARNING</p>
+			<p>The return date of one or more books has expired. If possible, extend the return date or return the book(s) to the library as soon as possible.
+			Until all overdue books are returned to the library, no new reservations can be made.</p>
+
+			<table id="tablestyle" class="css-serial">
+				<tr>
+					<th>#</th>
+					<th>Cover image</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Release year</th>
+					<th>Genre</th>
+					<th>ISBN</th>
+					<th>Return Date</th>
+				</tr>
+				<tr th:each="book : ${bookPage.content}">
+					<td></td>
+					<td><img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="tableBook" /></td>
+					<td th:text="${book.name}"></td>
+					<td th:text="${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}"></td>
+					<td th:text="${book.releaseYear}"></td>
+					<td th:text="${book.genre.value}"></td>
+					<td th:text="${book.isbn}"></td>
+					<td th:text="${book.returnDate}"></td>
+				</tr>
+			</table>
+			<br>
+			<div th:if="${bookPage.totalPages > 0}" class="pagination" th:each="bookPageNumber : ${bookPageNumbers}">
+				<a th:href="@{/user(pageOfBooks=${bookPageNumber},pageOfNotifications=${notificationPage.number + 1})}"
+						   th:text="${bookPageNumber}"
+						   th:class="${bookPageNumber==bookPage.number + 1} ? active"></a>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Reservations</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+			integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+	/>
+
+</head>
+<body>
+<ul th:replace="page-layout :: employeeNavBar" th:fragment="${notifications}"></ul>
+
+	<div class="container">
+		<h3>Unprocessed reservations</h3>
+		
+		<div th:if="${booksOfUSer.content.size() == 0}">
+			<p>No unprocessed reservations.</p>
+		</div>
+		
+		<div th:if="${booksOfUSer.content.size() > 0}">
+			<table id="tablestyle" class="css-serial">
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Release Year</th>
+					<th>Genre</th>
+					<th>Reserved by</th>
+					<th>Reserved Until</th>
+					<th style="width: 260px">Ready for Pick Up</th>
+				</tr>
+				<tr th:each="book : ${booksOfUSer.content}">
+					<td></td>
+					<td th:text="${book.key.name}"></td>
+					<td th:text="${book.key.authors.get(0).firstname + ' ' + book.key.authors.get(0).lastname}"></td>
+					<td th:text="${book.key.releaseYear}"></td>
+					<td th:text="${book.key.genre.value}"></td>
+					<td th:text="${book.value.firstname + ' ' + book.value.lastname}"></td>
+					<td th:text="${#dates.format(book.key.reservedUntil, 'dd-MMM-yyyy HH:mm')}"></td>
+					<td>
+						<form th:action="@{/employee/setreadyforpickup}" th:method="PUT">
+							<input style="width: 250px" class="table" type="submit" value="Notify for picking up">
+							<input type="hidden" th:name="_method" th:value="PUT">
+							<input type="hidden" name="bookId" th:value="${book.key.id}">
+							<input type="hidden" name="userId" th:value="${book.key.reservedBy}">
+							<input type="hidden" name="unprocessedPage" th:value="${booksOfUSer.number + 1}">
+							<input type="hidden" name="processedPage" th:value="${selectedBooksOfUser.number + 1}">
+						</form>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<div th:if="${booksOfUSer.totalPages > 0}" class="pagination" th:each="pageNumber : ${booksOfUSerPageNumbers}">
+				<a th:href="@{/employee/reservations(unprocessedPage=${pageNumber}, processedPage=${selectedBooksOfUser.number + 1})}"
+				   th:text="${pageNumber}"
+				   th:class="${pageNumber==booksOfUSer.number + 1} ? active"></a>
+			</div>
+			<br>
+			<div class="col-50">
+				<form th:action="@{/employee/setreadyforpickupAll}" th:method="PUT" th:object="${form}">
+					<input style="width: 200px" type="submit" value="Notify all for picking up">
+					<input type="hidden" th:name="_method" th:value="PUT">
+					<input type="hidden" th:value="${unprocessedReservations}" th:field="*{books}" required="required">
+					<input type="hidden" name="unprocessedPage" th:value="${booksOfUSer.number + 1}">
+					<input type="hidden" name="processedPage" th:value="${selectedBooksOfUser.number + 1}">
+				</form>
+			</div>
+			<br>
+		</div>
+		<br>
+		<div>
+			<br>
+			<h3>Processed reservations</h3>
+			<div th:if="${selectedBooksOfUser.content.size() == 0}">
+				<p>No processed book reservations.</p>
+			</div>
+
+			<div th:if="${selectedBooksOfUser.content.size() > 0}">
+				<table id="tablestyle" class="css-serial">
+					<tr>
+						<th>#</th>
+						<th>Title</th>
+						<th>Author</th>
+						<th>Release Year</th>
+						<th>Genre</th>
+						<th>Reserved by</th>
+						<th>Reserved Until</th>
+					</tr>
+					<tr th:each="book : ${selectedBooksOfUser.content}">
+						<td></td>
+						<td th:text="${book.key.name}"></td>
+						<td th:text="${book.key.authors.get(0).firstname + ' ' + book.key.authors.get(0).lastname}"></td>
+						<td th:text="${book.key.releaseYear}"></td>
+						<td th:text="${book.key.genre.value}"></td>
+						<td th:text="${book.value.firstname + ' ' + book.value.lastname}"></td>
+						<td th:text="${#dates.format(book.key.reservedUntil, 'dd-MMM-yyyy HH:mm')}"></td>
+					</tr>
+				</table>
+			</div>
+			<br>
+			<div th:if="${selectedBooksOfUser.totalPages > 0}" class="pagination" th:each="pageNumber : ${selectedBooksOfUserPageNumbers}">
+				<a th:href="@{/employee/reservations(processedPage=${pageNumber}, unprocessedPage=${booksOfUSer.number + 1})}"
+				   th:text="${pageNumber}"
+				   th:class="${pageNumber==selectedBooksOfUser.number + 1} ? active"></a>
+			</div>
+
+		</div>
+	</div>
+	
+
+</body>
+</html>

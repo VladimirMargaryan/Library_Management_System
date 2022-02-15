@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Browse Books</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+			integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+	/>
+
+</head>
+<body>
+<ul th:replace="page-layout :: userNavBar" th:fragment="${notifications}"></ul>
+
+	<div class="container">
+		<h3>Make reservation</h3>
+
+			<p>Please note that reserving a book doesn't mean you can pick it up right away. You will receive a notification on 
+			this account when an employee of the library has put it aside for you. It could also happen that the current user of a book doesn't
+			return the book in time, which will result in an expired reservation. In that case your reservation will be canceled.</p>
+
+	</div>	
+		
+		
+	 <div class="container">
+		<h3>Books</h3>
+		
+		<div class="row">
+			<form th:action="@{/user/browsebooks}" method="GET">
+				<div class="col-25">
+					<Label for="keyword">Search</Label>
+				</div>
+				<div class="col-search">
+					<input type="search" th:value="${keyword}" id="keyword" name="keyword" placeholder="Search book">
+				</div>
+				<div >
+					<input type="submit" value="Search">
+				</div>
+			</form>
+		</div>
+		<br/>
+		 <div th:if="${bookPage.content.size() > 0}">
+			<table id="tablestyle", class="css-serial">
+				<tr>
+					<th>#</th>
+					<th><a th:href="@{/user/browsebooks(keyword=${keyword}, sortBy='name')}" style="display:block; color: white">Title</a></th>
+					<th><a th:href="@{/user/browsebooks(keyword=${keyword}, sortBy='authors.firstname')}" style="display:block; color: white">Author</a></th>
+					<th><a th:href="@{/user/browsebooks(keyword=${keyword}, sortBy='releaseYear')}" style="display:block; color: white">Release Year</a></th>
+					<th>ISBN</th>
+					<th><a th:href="@{/user/browsebooks(keyword=${keyword}, sortBy='genre')}" style="display:block; color: white">Genre</a></th>
+					<th><a th:href="@{/user/browsebooks(keyword=${keyword}, sortBy='bookStatus')}" style="display:block; color: white">Status</a></th>
+					<th>Return Date</th>
+					<th>End Reservation Date</th>
+					<th style="width: 100px">Reserve</th>
+				</tr>
+				<tr th:each="book : ${bookPage.content}">
+					<td></td>
+					<td th:text="${book.getName()}"></td>
+					<td th:text="${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}"></td>
+					<td th:text="${book.releaseYear}"></td>
+					<td th:text="${book.isbn}"></td>
+					<td th:text="${book.genre.value}"></td>
+					<td th:text="${book.bookStatus.value}"></td>
+					<td th:text="${#dates.format(book.returnDate, 'dd-MMM-yyyy HH:mm')}"></td>
+					<td th:text="${#dates.format(book.reservedUntil, 'dd-MMM-yyyy HH:mm')}"></td>
+						<td>
+							<form th:action="@{/user/browsebooks}" th:method="GET">
+							<input class="table" th:if="${user.getStatus().toString() != 'BLOCKED'
+							 && book.reservedBy == null && book.getBookStatus().toString() != 'NO_CIRCULATION' && book.usedBy != user.id}" type="submit" value="Reserve book">
+							<input type="hidden" th:value="${book.id}" name="reservedBookId">
+							<input type="hidden" th:value="${keyword}" name="keyword">
+							<input type="hidden" th:value="${sortBy}" name="sortBy">
+
+							<input type="hidden" th:value="${bookPage.number + 1}" name="page">
+						</form>
+							<text th:if="${book.usedBy != null && book.usedBy == user.id}">Book is still in use.</text>
+							<text th:if="${book.reservedBy != null && book.reservedBy != user.id}">Someone reserved this book.</text>
+							<text th:if="${book.reservedBy != null && book.reservedBy == user.id}">You already reserved this book.</text>
+							<text th:if="${book.getBookStatus().toString() == 'NO_CIRCULATION'}">No circulation for this book.</text>
+							<text th:if="${user.getStatus().toString() == 'BLOCKED'}">Your are blocked.</text>
+						</td>
+				</tr>
+				
+			</table>
+			 <br>
+			 <div th:if="${bookPage.totalPages > 0}" class="pagination" th:each="pageNumber : ${pageNumbers}">
+						 <a th:href="@{/user/browsebooks(page=${pageNumber}, keyword=${keyword}, reservedBookId=${reservedBookId}, sortBy=${sortBy})}"
+							th:text="${pageNumber}"
+							th:class="${pageNumber==bookPage.number + 1} ? active"></a>
+			 </div>
+		</div>
+	</div>
+</body>
+</html>

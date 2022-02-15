@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Change book info</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+			integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+	/>
+</head>
+<body>
+<ul th:replace="page-layout :: employeeNavBar" th:fragment="${notifications}"></ul>
+
+	<div class="container">
+		<h3>Change book information</h3>
+		
+		
+		<form th:action="@{/employee/books/savebookchange}" th:object="${book}" th:method="PUT">
+
+			<div class="row">
+				<div class="col-50">
+					<Label>Title: </Label>
+				</div>
+				<div class="col-75">
+					<input type="text" th:value="${book.name}" th:field="${book.name}" required="required"/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Author:</label>
+				</div>
+				<div class="col-75">
+					<table id="tbl">
+						<tr>
+							<td><input type="text" id="authorName" name="authorName" placeholder="Firstname" th:field="${author.firstname}" required="required"></td>
+							<td><input type="text" id="authorLastname" name="authorLastname" placeholder="Lastname" th:field="${author.lastname}" required="required"></td>
+							<td><input type="radio" id="optionsRadios1" name="male" th:field="${author.gender}" th:value="MALE"></td>
+							<td><label for="optionsRadios1">Male</label></td>
+							<td><input type="radio" id="optionsRadios2" name="female" th:field="${author.gender}" th:value="FEMALE"></td>
+							<td><label for="optionsRadios2">Female</label></td>
+						</tr>
+					</table>
+
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Release year:</label>
+				</div>
+				<div class="col-75">
+					<input type="number" th:value="${book.releaseYear}" th:field="${book.releaseYear}" required="required"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label for="genre">Genre:</label>
+				</div>
+				<div class="col-75">
+					<select name="genre", id="genre">
+						<option th:each="bookGenre : ${T(com.app.library.model.BookGenre).values()}"
+								th:selected="${book.genre}" th:text="${bookGenre.value}" th:value="${bookGenre}"
+								th:field="${book.genre}" required="required"></option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>ISBN:</label>
+				</div>
+				<div class="col-75">
+					<label th:text="${book.isbn}"></label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label>Current user:</label>
+				</div>
+				<div class="col-75">
+					<label th:if="${book.usedBy == null}">No current user.</label>
+					<label th:if="${book.usedBy != null}" th:text="${currentUser.firstname + ' ' +
+					 currentUser.lastname + '   Email: ' + currentUser.email +
+					  '   Phone: ' + currentUser.phone}" style="width: 1000px"></label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label>Return date:</label>
+				</div>
+				<div th:if="${book.returnDate != null}" class="col-75">
+					<label th:text="${#dates.format(book.returnDate, 'dd-MMM-yyyy HH:mm')}"></label>
+				</div>
+				<div th:if="${book.returnDate == null}" class="col-75">
+					<label>No return date available.</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label>Reserved by user:</label>
+				</div>
+				<div class="col-75">
+					<label th:if="${book.reservedBy == null}">No current user.</label>
+					<label th:if="${book.reservedBy != null}" th:text="${reservedUser.firstname + ' ' +
+					 reservedUser.lastname + '   Email: ' + reservedUser.email +
+					 '   Phone: ' + reservedUser.phone}" style="width: 1000px"></label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-50">
+					<label>Reserved until:</label>
+				</div>
+				<div th:if="${book.reservedUntil != null}" class="col-75">
+					<label th:text="${#dates.format(book.reservedUntil, 'dd-MMM-yyyy HH:mm')}"></label>
+				</div>
+				<div th:if="${book.reservedUntil == null}" class="col-75">
+					<label>No return date available.</label>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+				</div>
+				<div class="col-75">
+					<input type="submit" value="Submit">
+					<input type="hidden" name="_csrf" th:value="${_csrf.token}">
+					<input type="hidden" th:value="${book.id}" th:field="${book.id}" required="required">
+					<input type="hidden" th:value="${book.bookStatus}" th:field="${book.bookStatus}" required="required">
+					<input type="hidden" th:value="${book.isbn}" th:field="${book.isbn}" required="required">
+					<input type="hidden" name="_method" th:value="PUT">
+				</div>
+			</div>
+		</form>	
+	</div>
+</body>
+</html>

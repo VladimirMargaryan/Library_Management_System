@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>New book</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+			integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+	/>
+
+</head>
+<body>
+<ul th:replace="page-layout :: employeeNavBar" th:fragment="${notifications}"></ul>
+
+		<div class="container">
+			<h3>Add new book to catalog</h3>
+
+			<form th:action="@{/employee/books/save}" th:object="${book}" method="POST">
+				<div class="row">
+					<div class="col-50">					
+						<label for="title">Title</label>
+					</div>
+				
+					<div class="col-75">
+						<input type="text" id="title" name="title" placeholder="Title" th:field="${book.name}" required="required">
+					</div>
+				</div>
+
+				<script>
+					document.getElementById("optionsRadios1").setAttribute("checked","checked")
+					document.getElementById("optionsRadios2").setAttribute("checked","checked")
+					function addField(n) {
+						let tr = n.parentNode.parentNode.cloneNode(true);
+						document.getElementById('tbl').appendChild(tr);
+					}
+				</script>
+
+				<div class="row">
+					<div class="col-50">
+						<label id="labelAuthor">Author</label>
+					</div>
+					<div class="col-75">
+						<table id="tbl">
+							<tr>
+							<td><input type="text" id="authorName" name="authorName" placeholder="Firstname" th:field="${author.firstname}" required="required"></td>
+							<td><input type="text" id="authorLastname" name="authorLastname" placeholder="Lastname" th:field="${author.lastname}" required="required"></td>
+							<td><input type="radio" id="optionsRadios1" name="male" th:field="${author.gender}" th:value="MALE"></td>
+							<td><label for="optionsRadios1">Male</label></td>
+							<td><input type="radio" id="optionsRadios2" name="female" th:field="${author.gender}" th:value="FEMALE"></td>
+							<td><label for="optionsRadios2">Female</label></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+								<div class="row">
+									<div class="col-50">
+										<label for="releaseYear">Release year</label>
+									</div>
+									<div class="col-75">
+										<input type="number" id="releaseYear" min="1300" max="2021" step="1" name="releaseYear" th:field="${book.releaseYear}" required="required">
+									</div>
+								</div>
+
+				<div class="row">
+					<div class="col-50">
+						<label for="genre">Genre</label>
+					</div>
+					<div class="col-75">
+						<select name="genre", id="genre">
+							<option th:each="bookGenre : ${T(com.app.library.model.BookGenre).values()}"
+									th:value="${bookGenre}" th:text="${bookGenre.value}" th:field="${book.genre}" required="required"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-50">
+					</div>
+					<div class="col-75">
+						<input type="submit" value="Submit">
+					</div>
+				</div>
+			</form>
+
+		</div>
+</body>
+</html>
