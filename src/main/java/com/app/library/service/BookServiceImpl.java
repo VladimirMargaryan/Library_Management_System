@@ -126,7 +126,7 @@ public class BookServiceImpl implements BookService {
         try {
             Book founded = getById(id);
         } catch (NotFoundException e) {
-            log.error("Book not found by the id " + id);
+            log.error("Book not found by id " + id);
             e.printStackTrace();
         }
         bookRepository.deleteById(id);
@@ -189,6 +189,7 @@ public class BookServiceImpl implements BookService {
     public void doReservation(Book book, User user) throws NotFoundException {
         if (!book.getBookStatus().equals(CHECKED_OUT_AND_RESERVED) && !book.getBookStatus().equals(RESERVED) && book.getReservedBy() == null) {
             log.info("Reservation of " + book + " by user " + user);
+
             book.setReservedBy(user.getId());
             if (book.getBookStatus().equals(CHECKED_OUT))
                 book.setBookStatus(CHECKED_OUT_AND_RESERVED);
@@ -226,12 +227,15 @@ public class BookServiceImpl implements BookService {
     @Override
     public void notifyingForPickingBookUp(Book book, User user) throws NotFoundException {
         log.info("Notifying for pick up book " + book + " to user " + user);
+
         String messageToUser = "Your reservation is ready for pick-up until " +
                 DateFormat.getDateTimeInstance().format(book.getReservedBy()) + ". \"" + book.getName() + " by " +
                 book.getAuthors().get(0).getFirstname() + " " + book.getAuthors().get(0).getLastname() + ".";
+
         Notification notification = new Notification(System.currentTimeMillis(), messageToUser);
         notification.setReceiverId(user.getId());
         notificationService.save(notification);
+
         List<Book> books = new ArrayList<>();
         books.add(book);
         sendReservationReadyEmail(books, user);
@@ -243,13 +247,16 @@ public class BookServiceImpl implements BookService {
     @Override
     public void notifyingUserForPickingUpBooks(List<Book> books, User user) throws NotFoundException {
         log.info("Notifying for pick up book " + books + " to user " + user);
+
         for (Book book : books){
             String messageToUser = "Your reservation is ready for pick-up until " +
                     DateFormat.getDateTimeInstance().format(book.getReservedBy()) + ". \"" + book.getName() + " by " +
                     book.getAuthors().get(0).getFirstname() + " " + book.getAuthors().get(0).getLastname() + ".";
+
             Notification notification = new Notification(System.currentTimeMillis(), messageToUser);
             notification.setReceiverId(user.getId());
             notificationService.save(notification);
+
             book.setBookStatus(READY_FOR_PICK_UP);
             update(book);
         }

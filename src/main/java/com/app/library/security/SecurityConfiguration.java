@@ -39,14 +39,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/reset_password/**", "/logout/**", "/CSS/**", "/images/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
+                .formLogin().loginPage("/login")
                 .and()
-                .rememberMe()
-                .rememberMeParameter("remember-me")
+                .rememberMe().rememberMeParameter("remember-me")
                 .and()
                 .logout().permitAll()
-                        .deleteCookies("remember-me");
+                .deleteCookies("remember-me");
 
         http.csrf().ignoringAntMatchers("/h2-console/**");
         http.headers().frameOptions().disable();

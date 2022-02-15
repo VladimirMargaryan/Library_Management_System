@@ -56,7 +56,7 @@
 								<td th:text="${user.lastname}"></td>
 								<td th:text="${user.email}"></td>
 								<td th:text="${user.phone}"></td>
-								<td th:text="${user.gender}"></td>
+								<td th:text="${user.gender.value}"></td>
 								<td>
 									<form th:action="@{/employee/returnedbooks}" method="GET">
 										<input class="table" style="margin-right: 10px" type="submit" value="Select user">

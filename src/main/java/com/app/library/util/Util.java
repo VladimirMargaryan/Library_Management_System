@@ -29,8 +29,10 @@ public class Util {
 
         if (selectedBookIdsInString != null && !selectedBookIdsInString.isEmpty()
                 && selectedBookId != null && userId != null && selectedBookId != 0 && userId != 0) {
+
             List<String> strings = Arrays.asList(selectedBookIdsInString.split(","));
             List<Long> bookIds = strings.stream().map(Long::parseLong).collect(Collectors.toList());
+
             for (Long id : bookIds) {
                 selectedBooks.add(bookService.getById(id));
                 booksInUseByUser.removeIf(book -> book.getId().equals(id));
@@ -46,14 +48,18 @@ public class Util {
             List<Book> booksInUseByUser) throws NotFoundException {
         if (removeBookId != null && removeBookId != 0 && selectedBookIdsInString != null
                 && userId != null && userId != 0 && !selectedBookIdsInString.isEmpty()) {
+
             List<String> strings = Arrays.asList(selectedBookIdsInString.split(","));
             List<Long> bookIds = strings.stream().map(Long::parseLong).collect(Collectors.toList());
+
             bookIds.remove(removeBookId);
             strings = bookIds.stream().map(String::valueOf).collect(Collectors.toList());
             selectedBookIdsInString = String.join(",", strings);
+
             if (!selectedBookIdsInString.isEmpty() && !selectedBookIdsInString.endsWith(","))
                 selectedBookIdsInString += ",";
             selectedBooks.clear();
+
             for (Long id : bookIds) {
                 selectedBooks.add(bookService.getById(id));
                 booksInUseByUser.removeIf(book -> book.getId().equals(id));
@@ -64,8 +70,10 @@ public class Util {
 
     public void returnBooks(Set<Book> selectedBooks, String selectedBookIdsInString, Long userId) throws NotFoundException {
         if (selectedBookIdsInString != null && !selectedBookIdsInString.isEmpty() && userId != null) {
+
             List<String> strings = Arrays.asList(selectedBookIdsInString.split(","));
             List<Long> bookIds = strings.stream().map(Long::parseLong).collect(Collectors.toList());
+
             for (Long id : bookIds) {
                 selectedBooks.add(bookService.getById(id));
             }

@@ -62,9 +62,9 @@
 										<input type="hidden" th:value="${user.id}" name="userId">
 									</form>
 									
-									<form th:action="@{/employee/users/showuserinfo}" method="GET">
+									<form th:action="@{/employee/users/showuserinfo/{userId}(userId=${user.id})}" method="GET">
 										<input style="background-color: orange" class="table" type="submit" value="User info">
-										<input type="hidden" th:value="${user.id}" name="userId">
+<!--										<input type="hidden" th:value="${user.id}" name="userId">-->
 									</form>
 									
 								</td>

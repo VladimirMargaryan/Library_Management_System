@@ -57,7 +57,7 @@
 				<td th:text="${user.phone}"></td>
 				<td th:text="${#dates.format(user.localDateTime, 'dd-MMM-yyyy HH:mm')}"></td>
 				<td th:text="${user.gender.value}"></td>
-				<td th:text="${user.status}"></td>
+				<td th:text="${user.status.value}"></td>
 				<td>
 					<div th:each="role : ${user.getRoles()}">
 						<text th:if="${role.getName().equals('ROLE_USER')}">User</text>
