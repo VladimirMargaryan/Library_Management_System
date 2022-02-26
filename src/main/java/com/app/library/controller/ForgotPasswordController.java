@@ -28,7 +28,8 @@ public class ForgotPasswordController {
     }
 
     @PostMapping("/forgot_password")
-    public String processForgotPassword(@RequestParam String email, Model model) {
+    public String processForgotPassword(@RequestParam String email,
+                                        Model model) {
         try {
             userService.upToResetPassword(email);
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");

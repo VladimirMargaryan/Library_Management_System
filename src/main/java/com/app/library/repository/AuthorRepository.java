@@ -17,7 +17,4 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
     Author getByBookId(@Param("bookId") Long id);
 
     Author getAuthorByFirstnameAndLastnameAndGender(String firstname, String lastname, Gender gender);
-    List<Author> getAuthorsByFirstnameAndLastname(String firstname, String lastname);
-
-    List<Author> getAuthorsByFirstnameOrLastname(String firstname, String lastname);
 }

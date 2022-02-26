@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.mail.MessagingException;
 
 @Controller
 public class SecurityController {
@@ -39,7 +38,8 @@ public class SecurityController {
 	}
 
 	@PostMapping(value="/register/save")
-	public String saveNewAccount(User account, Model model) {
+	public String saveNewAccount(User account,
+								 Model model) {
 		User user = userService.getByEmail(account.getEmail());
 		if (user == null) {
 			userService.save(account);
@@ -58,7 +58,8 @@ public class SecurityController {
 	}
 
 	@GetMapping("/verify")
-	public String verifyUser(@RequestParam String email, Model model) throws NotFoundException {
+	public String verifyUser(@RequestParam String email,
+							 Model model) throws NotFoundException {
 		model.addAttribute("title", "Activation");
 		model.addAttribute("message", "Your account activated!");
 		model.addAttribute("h2", "Success!");

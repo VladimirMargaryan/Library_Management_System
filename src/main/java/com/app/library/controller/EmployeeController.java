@@ -189,7 +189,8 @@ public class EmployeeController {
 	}
 
 	@GetMapping(value="/books/areyousuretodeletebook/{deleteBookId}")
-	public String areYouSureToDeleteBook(@PathVariable Long deleteBookId, Model model) throws NotFoundException {
+	public String areYouSureToDeleteBook(@PathVariable Long deleteBookId,
+										 Model model) throws NotFoundException {
 		Book book = bookService.getById(deleteBookId);
 		model.addAttribute("deleteBook", book);
 		return "employee/employee-delete-book";
@@ -207,7 +208,8 @@ public class EmployeeController {
 	}
 
 	@GetMapping(value="/books/changebookinfo/{changeBookId}")
-	public String changeBookInfo(@PathVariable Long changeBookId, Model model) throws NotFoundException {
+	public String changeBookInfo(@PathVariable Long changeBookId,
+								 Model model) throws NotFoundException {
 		Book book = bookService.getById(changeBookId);
 		Author author = authorService.getByBookId(changeBookId);
 		User currentUser = null;
@@ -260,9 +262,9 @@ public class EmployeeController {
 						 @RequestParam (required = false) String bookKeyword,
 						 @RequestParam (required = false) Long selectedBookId,
 						 @RequestParam (required = false) Long removedBookId,
-						 @RequestParam(required = false) Optional<Integer> page,
-						 @RequestParam(required = false) Optional<Integer> selectedBookPage,
-						 @RequestParam(required = false) Optional<Integer> browseBookPage,
+						 @RequestParam (required = false) Optional<Integer> page,
+						 @RequestParam (required = false) Optional<Integer> selectedBookPage,
+						 @RequestParam (required = false) Optional<Integer> browseBookPage,
 						 Model model) throws NotFoundException {
 
 		Page<User> userPage;
@@ -331,12 +333,11 @@ public class EmployeeController {
 	}
 
 	@GetMapping(value="/confirmorder")
-	public String confirmOrder(
-			@RequestParam(required = false) Optional<Integer> page,
-			@RequestParam(required = false) Optional<Integer> selectedBookPage,
-			@RequestParam(required = false) Optional<Integer> browseBookPage,
-			@RequestParam Long userId,
-			Model model) throws NotFoundException {
+	public String confirmOrder(@RequestParam (required = false) Optional<Integer> page,
+							   @RequestParam (required = false) Optional<Integer> selectedBookPage,
+							   @RequestParam (required = false) Optional<Integer> browseBookPage,
+							   @RequestParam Long userId,
+							   Model model) throws NotFoundException {
 
 		Page<Book> bookPage = bookService.getAllByBookStatusAndReservedBy(
 				BookStatus.READY_FOR_PICK_UP, userId,
@@ -371,9 +372,9 @@ public class EmployeeController {
 								@RequestParam (required = false) Long selectedBookId,
 								@RequestParam (required = false) Long removeBookId,
 								@RequestParam (required = false) String selectedBookIdsInString,
-								@RequestParam(required = false) Optional<Integer> page,
-								@RequestParam(required = false) Optional<Integer> selectedBookPage,
-								@RequestParam(required = false) Optional<Integer> inUseBookPage,
+								@RequestParam (required = false) Optional<Integer> page,
+								@RequestParam (required = false) Optional<Integer> selectedBookPage,
+								@RequestParam (required = false) Optional<Integer> inUseBookPage,
 								Model model) throws NotFoundException {
 
 		Page<User> userPage;
@@ -500,8 +501,8 @@ public class EmployeeController {
 	}
 
 	@PutMapping(value="/setreadyforpickup")
-	public String setReadyForPickup(@RequestParam(required = false) Optional<Integer> unprocessedPage,
-									@RequestParam(required = false) Optional<Integer> processedPage,
+	public String setReadyForPickup(@RequestParam (required = false) Optional<Integer> unprocessedPage,
+									@RequestParam (required = false) Optional<Integer> processedPage,
 									@RequestParam Long bookId,
 									@RequestParam Long userId,
 									Model model) throws NotFoundException {
@@ -513,8 +514,8 @@ public class EmployeeController {
 	}
 
 	@PutMapping(value="/setreadyforpickupAll")
-	public String setReadyForPickupAll(@RequestParam(required = false) Optional<Integer> unprocessedPage,
-									   @RequestParam(required = false) Optional<Integer> processedPage,
+	public String setReadyForPickupAll(@RequestParam (required = false) Optional<Integer> unprocessedPage,
+									   @RequestParam (required = false) Optional<Integer> processedPage,
 									   ListForm form,
 									   Model model) throws NotFoundException {
 

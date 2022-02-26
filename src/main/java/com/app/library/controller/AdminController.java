@@ -18,7 +18,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,8 +52,8 @@ public class AdminController {
 
 	@GetMapping(value = "/manageaccounts")
 	public String manageAuthorities(@RequestParam(required = false) String keyword,
-			@RequestParam(required = false) String sortBy,
-			@RequestParam(required = false) Optional<Integer> page,
+									@RequestParam(required = false) String sortBy,
+									@RequestParam(required = false) Optional<Integer> page,
 			Model model) {
 
 		Page<User> userPage;
@@ -81,7 +80,7 @@ public class AdminController {
 
 	@GetMapping(value = "/manageaccount/{userId}")
 	public String manageAccount(@PathVariable Long userId,
-			Model model) throws NotFoundException {
+								Model model) throws NotFoundException {
 
 		User user = userService.getById(userId);
 		model.addAttribute("user", user);
@@ -90,8 +89,8 @@ public class AdminController {
 
 	@PutMapping(value = "/confirmaccountsettings/{userId}")
 	public String confirmAccountChanges(@RequestParam(required = false) String accStatus,
-			@RequestParam(required = false) String role,
-			@PathVariable Long userId,
+										@RequestParam(required = false) String role,
+										@PathVariable Long userId,
 			Model model) throws NotFoundException {
 		model.addAttribute("role", role);
 		model.addAttribute("accStatus", accStatus);
@@ -101,8 +100,8 @@ public class AdminController {
 
 	@PutMapping(value = "/saveaccountsettings/{userId}")
 	public String saveAccountSettings(@RequestParam(required = false) String accStatus,
-			@RequestParam(required = false) String role,
-			@PathVariable Long userId) throws NotFoundException {
+									  @RequestParam(required = false) String role,
+									  @PathVariable Long userId) throws NotFoundException {
 		User user = userService.getById(userId);
 		Role foundedRole = null;
 		if (role != null)

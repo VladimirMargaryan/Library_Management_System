@@ -27,9 +27,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = userService.getByEmail(email);
         if (user != null && !user.getStatus().equals(UserStatus.UNVERIFIED)) {
             Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-            user.getRoles().forEach(role -> {
-                grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-            });
+            user.getRoles().forEach(role -> grantedAuthorities.add(new SimpleGrantedAuthority(role.getName())));
             return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
         } else
             throw new UsernameNotFoundException("Username not found!");

@@ -5,53 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f827831f-ea8b-4d5b-90c0-95d8beddf449" name="Changes" comment="some changes!">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/exception/UsernameOrPasswordIncorrectException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/model/UserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/model/UserStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/security/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/controller/ForgotPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/controller/ForgotPasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/controller/SecurityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/controller/SecurityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/repository/AuthorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/repository/AuthorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/repository/NotificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/repository/NotificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/security/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/security/CustomUserDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/CSS/account-layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/CSS/account-layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/admin-manage-account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/admin-manage-account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/admin-manage-accounts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/admin-manage-accounts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-new-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-new-book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-returned-books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-returned-books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-show-user-info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-show-user-info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-show-users.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/employee/employee-show-users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/page-layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/page-layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/security/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/security/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/user-browse-books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/user-browse-books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/user-your-books.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/user-your-books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/user-your-reservations.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user/user-your-reservations.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/EmployeeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/mail/MailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/mail/MailSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/model/UserStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/model/UserStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/security/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/security/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/BookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/BookServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/util/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/util/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/CSS/account-layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/CSS/account-layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/Images/library 3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/admin-manage-account.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/admin-manage-account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/admin-manage-accounts.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/admin-manage-accounts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-change-book-info.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-change-book-info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-new-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-new-book.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-returned-books.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-returned-books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-user-info.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-user-info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-users.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/page-layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/page-layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-browse-books.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/user-browse-books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-your-books.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/user-your-books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-your-reservations.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/user-your-reservations.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/library-0.0.1-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/library-0.0.1-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/library-0.0.1-SNAPSHOT.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/library-0.0.1-SNAPSHOT.war.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/security/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/security/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/library-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/library-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +154,12 @@
       <workItem from="1644770662853" duration="6245000" />
       <workItem from="1644829121199" duration="522000" />
       <workItem from="1644853226074" duration="1417000" />
-      <workItem from="1644899737705" duration="1205000" />
+      <workItem from="1644899737705" duration="2014000" />
+      <workItem from="1644913552212" duration="64000" />
+      <workItem from="1645000626017" duration="359000" />
+      <workItem from="1645433535859" duration="430000" />
+      <workItem from="1645433981865" duration="666000" />
+      <workItem from="1645508527919" duration="1246000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1643125004173</created>
@@ -289,7 +259,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644425892592</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="some changes!">
+      <created>1644901624676</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1644901624676</updated>
+    </task>
+    <task id="LOCAL-00016" summary="some changes!">
+      <created>1644901912434</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1644901912434</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
