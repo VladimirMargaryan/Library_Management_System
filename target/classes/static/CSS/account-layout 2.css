@@ -142,6 +142,10 @@ button[type=button] {
 
 }
 
+th a{
+  text-align: center;
+}
+
 .pagination a.active {
   background-color: #6dae67;
   color: white;
@@ -181,7 +185,7 @@ button[type=button] {
 #tablestyle th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color:#5D5A5E;
   color: white;
 }

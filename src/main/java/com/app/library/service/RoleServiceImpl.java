@@ -15,8 +15,11 @@ import java.util.Optional;
 @Slf4j
 public class RoleServiceImpl implements RoleService{
 
-    @Autowired
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
+
+    public RoleServiceImpl(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
 
     @Override
     public Role getByID(Long id) throws NotFoundException {

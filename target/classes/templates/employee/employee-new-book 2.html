@@ -33,7 +33,7 @@
 				<br>
 				<div class="row">
 					<div class="col-50">					
-						<label for="title">Title</label>
+						<label for="title">Title:</label>
 					</div>
 				
 					<div class="col-75">
@@ -41,18 +41,11 @@
 					</div>
 				</div>
 
-				<script>
-					document.getElementById("optionsRadios1").setAttribute("checked","checked")
-					document.getElementById("optionsRadios2").setAttribute("checked","checked")
-					function addField(n) {
-						let tr = n.parentNode.parentNode.cloneNode(true);
-						document.getElementById('tbl').appendChild(tr);
-					}
-				</script>
+				<script type="text/javascript" th:src="@{/js/script.js}"></script>
 
 				<div class="row">
 					<div class="col-50">
-						<label id="labelAuthor">Author</label>
+						<label id="labelAuthor">Author:</label>
 					</div>
 					<div class="col-75">
 						<table id="tbl">
@@ -68,18 +61,18 @@
 					</div>
 				</div>
 
-								<div class="row">
-									<div class="col-50">
-										<label for="releaseYear">Release year</label>
-									</div>
-									<div class="col-75">
-										<input type="number" id="releaseYear" min="1300" max="2021" step="1" name="releaseYear" th:field="${book.releaseYear}" required="required">
-									</div>
-								</div>
+				<div class="row">
+					<div class="col-50">
+						<label for="releaseYear">Release year:</label>
+					</div>
+					<div class="col-75">
+						<input type="number" id="releaseYear" min="1300" max="2021" step="1" name="releaseYear" th:field="${book.releaseYear}" required="required">
+					</div>
+				</div>
 
 				<div class="row">
 					<div class="col-50">
-						<label for="genre">Genre</label>
+						<label for="genre">Genre:</label>
 					</div>
 					<div class="col-75">
 						<select name="genre", id="genre">

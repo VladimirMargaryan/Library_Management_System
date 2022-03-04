@@ -29,17 +29,24 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ScheduledTasks {
 
-    @Autowired
-    private NotificationService notificationService;
+    private final NotificationService notificationService;
 
-    @Autowired
-    private MailSender mailSender;
+    private final MailSender mailSender;
 
-    @Autowired
-    private BookService bookService;
+    private final BookService bookService;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public ScheduledTasks(NotificationService notificationService,
+                          MailSender mailSender,
+                          BookService bookService,
+                          UserService userService) {
+
+        this.notificationService = notificationService;
+        this.mailSender = mailSender;
+        this.bookService = bookService;
+        this.userService = userService;
+    }
 
     @Async
     @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)

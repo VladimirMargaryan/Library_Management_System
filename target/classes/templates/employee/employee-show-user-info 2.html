@@ -16,6 +16,8 @@
 <body>
 <ul th:replace="page-layout :: employeeNavBar" th:fragment="${notifications}"></ul>
 
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+
 		<div class="container">
 			<h3>User info</h3>
 
@@ -79,7 +81,7 @@
 					Account Status:
 				</div>
 				<div class="col-75">
-					<text th:text="${user.status}"></text>
+					<text th:text="${user.status.value}"></text>
 				</div>
 			</div>
 

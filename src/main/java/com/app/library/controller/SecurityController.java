@@ -3,8 +3,6 @@ package com.app.library.controller;
 import com.app.library.exception.NotFoundException;
 import com.app.library.model.User;
 import com.app.library.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SecurityController {
 
-	@Autowired
-	PasswordEncoder pwEncoder;
+	private final UserService userService;
 
-	@Autowired
-	UserService userService;
+	public SecurityController(UserService userService) {
+		this.userService = userService;
+	}
 
 	@GetMapping(value="/login")
 	public String login() {

@@ -16,8 +16,11 @@ import java.util.stream.IntStream;
 @Component
 public class Util {
 
-    @Autowired
-    private BookService bookService;
+    private final BookService bookService;
+
+    public Util(BookService bookService) {
+        this.bookService = bookService;
+    }
 
 
     public void selectedBooks (

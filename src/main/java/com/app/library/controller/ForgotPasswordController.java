@@ -4,7 +4,6 @@ import com.app.library.exception.BadRequestException;
 import com.app.library.exception.NotFoundException;
 import com.app.library.model.User;
 import com.app.library.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +18,11 @@ import static com.app.library.model.UserStatus.UNVERIFIED;
 @Controller
 public class ForgotPasswordController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public ForgotPasswordController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/forgot_password")
     public String showForgotPasswordForm() {
@@ -35,7 +37,7 @@ public class ForgotPasswordController {
             model.addAttribute("message", "We have sent a reset password link to your email. Please check.");
 
         } catch (MessagingException e) {
-            model.addAttribute("error", "Error while sending email");
+            model.addAttribute("error", "Error while sending an email.");
         } catch (NotFoundException e) {
             model.addAttribute("error", e.getMessage());
         }
@@ -76,6 +78,7 @@ public class ForgotPasswordController {
                 userService.resetPassword(user, password);
             } catch (NotFoundException | BadRequestException e) {
                 model.addAttribute("error", e.getMessage());
+                return "message";
             }
             model.addAttribute("title", "Reset Password");
             model.addAttribute("message", "You have successfully changed your password.");

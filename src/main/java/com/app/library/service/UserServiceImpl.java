@@ -24,17 +24,24 @@ import static com.app.library.model.UserStatus.*;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private RoleService roleService;
+    private final RoleService roleService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private MailSender mailSender;
+    private final MailSender mailSender;
+
+    public UserServiceImpl(UserRepository userRepository,
+                           RoleService roleService,
+                           PasswordEncoder passwordEncoder,
+                           MailSender mailSender) {
+
+        this.userRepository = userRepository;
+        this.roleService = roleService;
+        this.passwordEncoder = passwordEncoder;
+        this.mailSender = mailSender;
+    }
 
     @Override
     public List<User> getAll() {

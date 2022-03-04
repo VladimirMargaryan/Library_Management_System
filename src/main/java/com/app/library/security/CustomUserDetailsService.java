@@ -4,7 +4,6 @@ package com.app.library.security;
 import com.app.library.model.User;
 import com.app.library.model.UserStatus;
 import com.app.library.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,8 +17,11 @@ import java.util.Collection;
 @Component("userDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public CustomUserDetailsService(UserService userService) {
+        this.userService = userService;
+    }
 
 
     @Override

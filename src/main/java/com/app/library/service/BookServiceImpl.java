@@ -23,21 +23,28 @@ import static com.app.library.model.BookStatus.*;
 @Slf4j
 public class BookServiceImpl implements BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private NotificationService notificationService;
+    private final NotificationService notificationService;
 
-    @Autowired
-    private MailSender mailSender;
+    private final MailSender mailSender;
 
-    @Autowired
-    private ReceiptService receiptService;
+    private final ReceiptService receiptService;
 
+    public BookServiceImpl(BookRepository bookRepository,
+                           UserService userService,
+                           NotificationService notificationService,
+                           MailSender mailSender,
+                           ReceiptService receiptService) {
+
+        this.bookRepository = bookRepository;
+        this.userService = userService;
+        this.notificationService = notificationService;
+        this.mailSender = mailSender;
+        this.receiptService = receiptService;
+    }
 
 
     @Override

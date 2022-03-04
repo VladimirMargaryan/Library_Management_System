@@ -57,7 +57,7 @@
 				<td th:text="${user.email}"></td>
 				<td th:text="${user.phone}"></td>
 				<td th:text="${user.gender.value}"></td>
-				<td th:text="${user.status}"></td>
+				<td th:text="${user.status.value}"></td>
 				<td>
 					<form th:action="@{/employee/users/showuserinfo/{userId}(userId=${user.id})}" method="GET">
 						<input class="table" type="submit" value="Show user info">

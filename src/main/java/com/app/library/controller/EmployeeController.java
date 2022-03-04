@@ -12,7 +12,6 @@ import com.app.library.service.BookService;
 import com.app.library.service.NotificationService;
 import com.app.library.service.UserService;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,20 +27,29 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping(value="/employee")
 public class EmployeeController {
 
-	@Autowired
-	private UserService userService;
+	private final UserService userService;
 
-	@Autowired
-	private BookService bookService;
+	private final BookService bookService;
 
-	@Autowired
-	private AuthorService authorService;
+	private final AuthorService authorService;
 
-	@Autowired
-	private NotificationService notificationService;
+	private final NotificationService notificationService;
 
-	@Autowired
-	private Util util;
+	private final Util util;
+
+	public EmployeeController(UserService userService,
+							  BookService bookService,
+							  AuthorService authorService,
+							  NotificationService notificationService,
+							  Util util) {
+
+		this.userService = userService;
+		this.bookService = bookService;
+		this.authorService = authorService;
+		this.notificationService = notificationService;
+		this.util = util;
+	}
+
 
 	@GetMapping
 	public String employeeHomePage(Model model) {

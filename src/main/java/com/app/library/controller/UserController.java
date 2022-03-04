@@ -6,7 +6,6 @@ import com.app.library.service.BookService;
 import com.app.library.service.NotificationService;
 import com.app.library.service.UserService;
 import com.app.library.util.Util;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,17 +21,24 @@ import java.util.*;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private BookService bookService;
+	private final BookService bookService;
 
-	@Autowired
-	private NotificationService notificationService;
+	private final NotificationService notificationService;
 
-	@Autowired
-	private Util util;
+	private final Util util;
+
+	public UserController(UserService userService,
+						  BookService bookService,
+						  NotificationService notificationService,
+						  Util util) {
+
+		this.userService = userService;
+		this.bookService = bookService;
+		this.notificationService = notificationService;
+		this.util = util;
+	}
 
 	@GetMapping
 	public String userHome(@RequestParam (required = false) Optional<Integer> pageOfBooks,

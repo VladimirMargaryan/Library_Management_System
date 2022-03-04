@@ -13,7 +13,6 @@ import com.app.library.service.NotificationService;
 import com.app.library.service.RoleService;
 import com.app.library.service.UserService;
 import com.app.library.util.Util;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,17 +26,24 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/admin")
 public class AdminController {
 
-	@Autowired
-	private UserService userService;
+	private final UserService userService;
 
-	@Autowired
-	private NotificationService notificationService;
+	private final NotificationService notificationService;
 
-	@Autowired
-	private RoleService roleService;
+	private final RoleService roleService;
 
-	@Autowired
-	private Util util;
+	private final Util util;
+
+	public AdminController(UserService userService,
+						   NotificationService notificationService,
+						   RoleService roleService,
+						   Util util) {
+
+		this.userService = userService;
+		this.notificationService = notificationService;
+		this.roleService = roleService;
+		this.util = util;
+	}
 
 	@GetMapping
 	public String adminHome(Model model) {

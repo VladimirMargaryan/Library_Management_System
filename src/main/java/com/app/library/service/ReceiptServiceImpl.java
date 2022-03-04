@@ -16,8 +16,11 @@ import java.util.Optional;
 @Slf4j
 public class ReceiptServiceImpl implements ReceiptService {
 
-    @Autowired
-    private ReceiptRepository receiptRepository;
+    private final ReceiptRepository receiptRepository;
+
+    public ReceiptServiceImpl(ReceiptRepository receiptRepository) {
+        this.receiptRepository = receiptRepository;
+    }
 
     @Override
     public List<Receipt> getAll() {

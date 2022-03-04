@@ -1,7 +1,6 @@
 package com.app.library.mail;
 
 import com.app.library.config.TemplateEngineConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,15 +18,17 @@ import java.util.List;
 @Component("mailSenderClient")
 public class MailSender {
 
-    @Autowired
-    private JavaMailSender emailSender;
+    private final JavaMailSender emailSender;
 
-    @Autowired
-    private TemplateEngineConfig templateEngineConfig;
+    private final TemplateEngineConfig templateEngineConfig;
 
     @Value("${spring.mail.username}")
     private String from;
 
+    public MailSender(JavaMailSender emailSender, TemplateEngineConfig templateEngineConfig) {
+        this.emailSender = emailSender;
+        this.templateEngineConfig = templateEngineConfig;
+    }
 
 
     @Async

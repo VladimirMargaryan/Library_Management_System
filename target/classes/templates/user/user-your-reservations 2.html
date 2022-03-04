@@ -36,9 +36,23 @@
 			</tr>
 			<tr th:each="book : ${bookPage.content}">
 				<td></td>
-				<td><img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="tableBook" /></td>
-				<td th:text="${book.name}"></td>
-				<td th:text="${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}"></td>
+				<td>
+					<a th:href="@{'https://en.wikipedia.org/wiki/' + ${book.name}}"
+					   onclick="return popup(this, 'Book')">
+						<img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="tableBook" />
+					</a>
+				</td>
+				<td>
+					<a th:href="@{'https://en.wikipedia.org/wiki/' + ${book.name}}"
+					   th:text="${book.name}"
+					   onclick="return popup(this, 'Book')" style="color: black">
+					</a>
+				</td>
+				<td>
+					<a th:text="${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}"
+					   th:href="@{'https://en.wikipedia.org/wiki/' + ${book.getAuthors().get(0).firstname + ' ' + book.getAuthors().get(0).lastname}}"
+					   onclick="return popup(this, 'Author')" style="color: black"></a>
+				</td>
 				<td th:text="${book.releaseYear}"></td>
 				<td th:text="${book.genre.value}"></td>
 				<td th:text="${book.isbn}"></td>

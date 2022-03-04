@@ -16,8 +16,11 @@ import java.util.Optional;
 @Slf4j
 public class AuthorServiceImpl implements AuthorService{
 
-    @Autowired
-    private AuthorRepository authorRepository;
+    private final AuthorRepository authorRepository;
+
+    public AuthorServiceImpl(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
 
     @Override
     public Author getById(Long id) throws NotFoundException {

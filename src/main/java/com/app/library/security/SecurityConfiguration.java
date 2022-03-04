@@ -1,6 +1,5 @@
 package com.app.library.security;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,20 +12,23 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableGlobalMethodSecurity(jsr250Enabled = true,
+@EnableGlobalMethodSecurity(
+        jsr250Enabled = true,
         securedEnabled = true,
         prePostEnabled = true
 )
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public SecurityConfiguration(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+        this.userDetailsService = userDetailsService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
 
     @Override
@@ -46,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().permitAll()
                 .deleteCookies("remember-me");
 
-        http.csrf().ignoringAntMatchers("/h2-console/**");
+//        http.csrf().ignoringAntMatchers("/h2-console/**");
         http.headers().frameOptions().disable();
 
     }
@@ -65,6 +67,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder);
     }
-
 
 }
