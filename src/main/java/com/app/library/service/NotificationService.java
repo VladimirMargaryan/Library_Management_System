@@ -14,6 +14,6 @@ public interface NotificationService {
     Notification getById(Long id) throws NotFoundException;
     Notification save(Notification notification);
     void removeById(Long id);
-    Notification update(Notification notification);
+    Notification update(Notification notification) throws NotFoundException;
 
 }

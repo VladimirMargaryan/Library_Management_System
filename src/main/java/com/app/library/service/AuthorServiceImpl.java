@@ -5,7 +5,6 @@ import com.app.library.model.Author;
 import com.app.library.model.Gender;
 import com.app.library.repository.AuthorRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,16 +68,15 @@ public class AuthorServiceImpl implements AuthorService{
 
     @Transactional
     @Override
-    public void removeById(Long id) {
-        try {
-            Author author = getById(id);
-        } catch (NotFoundException e) {
+    public void removeById(Long id) throws NotFoundException {
+        Optional<Author> author = authorRepository.findById(id);
+        if (!author.isPresent()){
             log.error("There is no author by the id " + id + "!");
-            log.error(e.getMessage());
-            e.printStackTrace();
+            throw new NotFoundException("There is no author by the id " + id + "!");
+        } else {
+            authorRepository.deleteById(getById(id).getId());
+            log.info("author by id " + id + " successfully deleted!");
         }
-        authorRepository.deleteById(id);
-        log.info("author by id " + id + " successfully deleted!");
     }
 
     @Transactional

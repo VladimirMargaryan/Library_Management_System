@@ -46,7 +46,7 @@ public class ForgotPasswordController {
 
 
     @GetMapping("/reset_password")
-    public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
+    public String showResetPasswordForm(@Param(value = "token") String token, Model model) throws NotFoundException {
         User user = userService.getByResetPasswordToken(token);
         model.addAttribute("token", token);
 
@@ -63,7 +63,7 @@ public class ForgotPasswordController {
     @PostMapping("/reset_password")
     public String processResetPassword(@RequestParam String token,
                                        @RequestParam String password,
-                                       Model model) {
+                                       Model model) throws NotFoundException {
 
         User user = userService.getByResetPasswordToken(token);
         model.addAttribute("title", "Reset your password");

@@ -6,7 +6,6 @@ import com.app.library.mail.MailSender;
 import com.app.library.model.*;
 import com.app.library.repository.BookRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -96,10 +95,12 @@ public class BookServiceImpl implements BookService {
         }
         book.setIsbn(isbn);
         List<Author> authors = book.getAuthors();
+
         if (authors == null)
             authors = new ArrayList<>();
         authors.add(author);
         book.setAuthors(authors);
+
         Book duplicateBook = bookRepository.getBookByName(book.getName());
         if (duplicateBook != null) {
             log.info("Duplicate book is founded. " + duplicateBook);
@@ -129,15 +130,15 @@ public class BookServiceImpl implements BookService {
 
     @Transactional
     @Override
-    public void removeById(Long id) {
-        try {
-            Book founded = getById(id);
-        } catch (NotFoundException e) {
+    public void removeById(Long id) throws NotFoundException {
+        Optional<Book> book = bookRepository.findById(id);
+        if (!book.isPresent()){
             log.error("Book not found by id " + id);
-            e.printStackTrace();
+            throw new NotFoundException("Book not found by id " + id);
+        } else {
+            bookRepository.deleteById(id);
+            log.info("Book deleted!");
         }
-        bookRepository.deleteById(id);
-        log.info("Book deleted!");
     }
 
     @Transactional

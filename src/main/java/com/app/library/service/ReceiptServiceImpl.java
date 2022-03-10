@@ -99,12 +99,11 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     @Transactional
     @Override
-    public void removeById(Long id) {
-        try {
-            Receipt receipt = getById(id);
-        } catch (NotFoundException e) {
-            log.info("Receipt not found! " + e.getMessage());
-            e.printStackTrace();
+    public void removeById(Long id) throws NotFoundException {
+        Optional<Receipt> optionalReceipt = receiptRepository.findById(id);
+        if (!optionalReceipt.isPresent()){
+            log.error("Receipt not found by the id " + id);
+            throw new NotFoundException("Receipt not found by the id " + id);
         }
         receiptRepository.deleteById(id);
         log.info("Receipt removed!");

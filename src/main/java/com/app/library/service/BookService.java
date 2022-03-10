@@ -19,7 +19,7 @@ public interface BookService {
     Book save(Book book);
     Book save(Book book, Author author);
     Book getById(Long id) throws NotFoundException;
-    void removeById(Long id);
+    void removeById(Long id) throws NotFoundException;
     Book update(Book book) throws NotFoundException;
     List<Book> getAllByUsedBy(Long id) throws NotFoundException;
     Page<Book> getAllByUsedBy(Long id, Pageable pageable);

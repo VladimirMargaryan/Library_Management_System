@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void verifyUserEmail(String email) throws NotFoundException {
-        User user = userRepository.getByEmail(email);
+        User user = getByEmail(email);
         if (user == null)
             throw new NotFoundException("User not found by the email " + email);
         user.setStatus(VERIFIED);
@@ -123,7 +123,8 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void removeById(Long id) {
+    public void removeById(Long id) throws NotFoundException {
+        getById(id);
         userRepository.deleteById(id);
         log.info("User deleted by the id " + id);
     }
@@ -173,7 +174,7 @@ public class UserServiceImpl implements UserService {
             }
         } else {
             log.error("User not found by email " + email);
-            throw new NotFoundException("User not found by this email");
+            throw new NotFoundException("User not found by the email " + email);
         }
     }
 
@@ -193,10 +194,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getByResetPasswordToken(String token) {
+    public User getByResetPasswordToken(String token) throws NotFoundException {
         User user = userRepository.getByResetPasswordToken(token);
-        if (user == null)
+        if (user == null) {
             log.info("User not found with reset password token " + token);
+            throw new NotFoundException("User not found with reset password token " + token);
+        }
         return user;
     }
 }

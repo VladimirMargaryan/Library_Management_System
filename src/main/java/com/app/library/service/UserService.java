@@ -17,12 +17,12 @@ public interface UserService {
     User save(User user);
     User getByEmail(String email);
     User getById (Long id) throws NotFoundException;
-    void removeById(Long id);
+    void removeById(Long id) throws NotFoundException;
     User update(User user) throws NotFoundException;
     void verifyUserEmail(String email) throws NotFoundException;
     void upToResetPassword(String email) throws NotFoundException, MessagingException;
     void resetPassword(User user, String newPassword) throws NotFoundException, BadRequestException;
     void sendEmailAboutVerificationOfAccount(User user);
-    User getByResetPasswordToken(String token);
+    User getByResetPasswordToken(String token) throws NotFoundException;
 
 }

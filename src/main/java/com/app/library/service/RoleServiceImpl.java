@@ -56,7 +56,13 @@ public class RoleServiceImpl implements RoleService{
 
     @Transactional
     @Override
-    public void removeById(Long id) {
+    public void removeById(Long id) throws NotFoundException {
+        Optional<Role> role = roleRepository.findById(id);
+        if (!role.isPresent()){
+            String message = "Role not found by the id " + id;
+            log.error(message);
+            throw new NotFoundException(message);
+        }
         roleRepository.deleteById(id);
         log.info("Role by th id " + id + " deleted!");
     }

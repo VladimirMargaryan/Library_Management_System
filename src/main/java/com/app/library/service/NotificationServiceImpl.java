@@ -58,22 +58,13 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public Notification update(Notification notification) {
-        Notification newNotification = null;
-        try {
-            newNotification = getById(notification.getId());
-        } catch (NotFoundException e) {
-            log.error("Notification by the id " + notification.getId() + " not found!");
-            e.printStackTrace();
-        }
-        Notification updated = null;
-        if (newNotification != null){
-            newNotification.setCreationDate(notification.getCreationDate());
-            newNotification.setMessage(notification.getMessage());
-            newNotification.setReceiverId(notification.getReceiverId());
-            updated = save(newNotification);
-            log.info("Notification updated! " + updated);
-        }
+    public Notification update(Notification notification) throws NotFoundException {
+        Notification newNotification = getById(notification.getId());
+        newNotification.setCreationDate(notification.getCreationDate());
+        newNotification.setMessage(notification.getMessage());
+        newNotification.setReceiverId(notification.getReceiverId());
+        Notification updated = save(newNotification);
+        log.info("Notification updated! " + updated);
         return updated;
     }
 }

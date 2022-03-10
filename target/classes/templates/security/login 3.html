@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{CSS/security-layout.css}">
+</head>
+<body>
+	  <div class="wrapper">
+	  	<div class="container">
+      		<form name="f" th:action="@{/login}" method="POST">               
+                          
+                <div th:if="${param.error}" class="alert alert-error">    
+                    <small class="incorrect">Invalid username and password.</small>
+                </div>
+            
+                <div th:if="${param.logout}" class="alert alert-success"> 
+                   <small class="logout"> You have been logged out.</small> 
+                </div>
+
+				<div th:if="${message != null}">
+					<small class="incorrect">[[${message}]]</small>
+				</div>
+
+                <div class="row">
+                	<div class="col-25">
+                		<label for="username">E-mail</label>
+                	</div>
+                	<div class="col-75">
+                		<input type="text" id="username" placeholder="E-mail" name="username"/>
+               		</div>
+                </div>
+                
+            	<div class="row">
+            		<div class="col-25">
+                		<label for="password">Password</label>
+                	</div>
+                	<div class="col-75">
+                		<input type="password" id="password" placeholder="Password" name="password"/>
+                	</div>
+                </div>
+
+				<br>
+
+				<div class="rem">
+					<tr>
+						<td><input type="checkbox" name="remember-me" /></td>
+						<td>Remember Me</td>
+					</tr>
+				</div>
+                	<br>
+                <div class="form-actions">
+                   <input style="margin-left: 25%; margin-right: 25%; width: 50%" type="submit" value="Sign in">
+                </div>
+			</form>
+
+
+		  <form th:action="@{/register}" method="GET">
+       		<div class="row">
+
+       			<input style="margin-left: 25%; margin-right: 25%; width: 50%" type="submit" value="Register">
+
+			</div>
+		  </form>
+			<br>
+			<div class="fpass" >
+				<a th:href="@{/forgot_password}">
+					Forgot your password?
+				</a>
+			</div>
+
+		</div>
+	  </div>
+</body>
+</html>

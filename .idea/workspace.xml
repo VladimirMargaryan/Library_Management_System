@@ -5,84 +5,115 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f827831f-ea8b-4d5b-90c0-95d8beddf449" name="Changes" comment="some changes!">
+      <change afterPath="$PROJECT_DIR$/.idea/CoverUsage.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/controller/EmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/controller/ForgotPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/controller/ForgotPasswordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/controller/SecurityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/controller/SecurityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/exception/BadRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/exception/BadRequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/exception/EmailAlreadyExistException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/exception/NotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/exception/NotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/exception/NotVerifiedUserException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/exception/NotVerifiedUserException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/mail/MailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/mail/MailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/security/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/security/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/security/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/repository/AuthorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/repository/AuthorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/AuthorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/AuthorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/AuthorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/AuthorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/BookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/BookServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/NotificationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/NotificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/NotificationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/ReceiptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/ReceiptService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/ReceiptServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/ReceiptServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/RoleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/util/ScheduledTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/util/ScheduledTasks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/library/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/library/util/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/config/TemplateEngineConfig 3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/AdminController 2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/AdminController 2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/EmployeeController 2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/EmployeeController 2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/app/library/LibraryApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/app/library/LibraryApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/LibraryApplication 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/AdminController 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/EmployeeController 2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/EmployeeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/ForgotPasswordController 2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/ForgotPasswordController 2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/ErrorPagesController 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/ForgotPasswordController 2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/ForgotPasswordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/ForgotPasswordController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/SecurityController 2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/SecurityController 2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/SecurityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/SecurityController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/exception/BadRequestException 2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/exception/BadRequestException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/exception/BadRequestException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/exception/EmailAlreadyExistException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/exception/NotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/exception/NotFoundException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/exception/NotVerifiedUserException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/exception/NotVerifiedUserException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/exception/UsernameOrPasswordIncorrectException 2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/mail/MailSender 3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/mail/MailSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/mail/MailSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/repository/AuthorRepository 2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/repository/AuthorRepository 2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/repository/AuthorRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/repository/AuthorRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/security/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/security/CustomUserDetailsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/security/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/security/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/HomeController 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/SecurityController 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/controller/UserController 3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/exception/EmailAlreadyExistException 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/exception/NotFoundException 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/exception/NotVerifiedUserException 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/model/Author 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/model/BookStatus 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/model/ListForm 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/model/Notification 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/model/Role 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/repository/AuthorRepository 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/repository/NotificationRepository 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/security/BeanConfig 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/AuthorService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/AuthorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/AuthorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/AuthorServiceImpl 2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/AuthorServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/AuthorServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/BookServiceImpl 3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/BookServiceImpl 3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/BookService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/BookService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/BookServiceImpl 3.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/BookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/BookServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/NotificationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/NotificationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/NotificationServiceImpl 2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/NotificationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/NotificationServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/ReceiptService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/ReceiptService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/ReceiptService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/ReceiptServiceImpl 2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/ReceiptServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/ReceiptServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/RoleService 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/RoleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/RoleService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/RoleServiceImpl 2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/RoleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/RoleServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/UserServiceImpl 2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/service/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/util/QRCodeGenerator 3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/util/ScheduledTasks 3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/util/ScheduledTasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/util/ScheduledTasks.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/app/library/util/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/app/library/util/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/CSS/account-layout 2.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/CSS/account-layout 2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/script 2.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/script 2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/admin-account-settings-saved 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/admin-manage-account 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/admin-manage-account 2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/admin-manage-accounts 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/email-templates/account-verification-template 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/email-templates/reservation-template 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-all-reservations-ready-for-pick-up 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-book-information-changed 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-change-book-info 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-new-book 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-new-book 2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-order-saved 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-orders 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-orders 2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-returned-books 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-user-info 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-user-info 2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-users 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-users 2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/error-pages/500-error 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/security/reset_password_form 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/security/reset_password_form 2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-book-can-not-be-extended 2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-browse-books 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/user-browse-books 2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-your-books 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/user-your-books 2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-your-reservations 2.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/user-your-reservations 2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/CSS/account-layout 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/CSS/security-layout 2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/script 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/admin-confirm-account-settings 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/admin-home 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/admin-manage-account 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/book-already-exists 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/email-templates/reservation-canceled 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/email-templates/reset-password-template 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/email-templates/return-date-expires-after-two-days 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-book-deleted 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-book-saved 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-books-returned 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-confirm-order 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-confirm-returned-books 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-delete-book 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-home 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-new-book 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-orders 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-reservation-ready-for-pick-up 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-reservations 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-books 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-user-info 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/employee/employee-show-users 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error-pages/400-error 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error-pages/403-error 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error-pages/404-error 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error-pages/408-error 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error-pages/502-error 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error-pages/503-error 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error-pages/504-error 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error-pages/general-error-page 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/security/account-created 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/security/reset_password_form 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-FAQ 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-book-extended 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-browse-books 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-do-payment 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-home 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-pay-fine 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-pay-reservation 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-your-books 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/user-your-reservations 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/verifyMessage 2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/app/library/LibraryApplicationTests 3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/app/library/LibraryApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/app/library/LibraryApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +124,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -149,14 +181,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/frontend/src" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources" />
       <recent name="$PROJECT_DIR$/src/main/frontend/src" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/images" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/Images" />
@@ -167,10 +203,92 @@
       <recent name="$PROJECT_DIR$/src/main/resources/templates/email-templates" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.app.library.service" />
+      <recent name="com.app.library.repository" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.LibraryApplication">
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/library/templates/index.html" useBuiltInWebServerPort="true">
-      <method v="2" />
+  <component name="RunManager" selected="JUnit.LibraryApplicationTests">
+    <configuration name="LibraryApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.app.library.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.app.library" />
+      <option name="MAIN_CLASS_NAME" value="com.app.library.LibraryApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.app.library.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.app.library.service" />
+      <option name="MAIN_CLASS_NAME" value="com.app.library.service.UserServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.CanGetByResetPasswordToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.app.library.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.app.library.service" />
+      <option name="MAIN_CLASS_NAME" value="com.app.library.service.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="CanGetByResetPasswordToken" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.CannotGetByTokenAndThrowsNotFoundException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.app.library.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.app.library.service" />
+      <option name="MAIN_CLASS_NAME" value="com.app.library.service.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="CannotGetByTokenAndThrowsNotFoundException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.KeyTimeExpiredAndThrowsBadRequestException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.app.library.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.app.library.service" />
+      <option name="MAIN_CLASS_NAME" value="com.app.library.service.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="KeyTimeExpiredAndThrowsBadRequestException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="LibraryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="library" />
@@ -179,9 +297,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Write tests for method AuthorRepository.getByBookId" type="com.diffblue.cover.write-tests-run-configuration" factoryName="com.diffblue.cover.write-tests-run-configuration">
+      <module name="library" />
+      <settings run-config-name="Write tests for method AuthorRepository.getByBookId" include-system-env-vars="true">
+        <jvm-args />
+        <selection-scope>method</selection-scope>
+        <selected-element key="com.app.library.repository.AuthorRepository.getByBookId:(Ljava/lang/Long;)Lcom/app/library/model/Author;" />
+      </settings>
+      <method v="2" />
+    </configuration>
+    <configuration name="Write tests for method BookRepository.findByAndSort" type="com.diffblue.cover.write-tests-run-configuration" factoryName="com.diffblue.cover.write-tests-run-configuration">
+      <module name="library" />
+      <settings run-config-name="Write tests for method BookRepository.findByAndSort" include-system-env-vars="true">
+        <jvm-args />
+        <selection-scope>method</selection-scope>
+        <selected-element key="com.app.library.repository.BookRepository.findByAndSort:(Ljava/lang/String;Lorg/springframework/data/domain/Pageable;)Lorg/springframework/data/domain/Page;" />
+      </settings>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JUnit.LibraryApplicationTests" />
+        <item itemvalue="JUnit.UserServiceImplTest" />
+        <item itemvalue="JUnit.UserServiceImplTest.CannotGetByTokenAndThrowsNotFoundException" />
+        <item itemvalue="JUnit.UserServiceImplTest.CanGetByResetPasswordToken" />
+        <item itemvalue="JUnit.UserServiceImplTest.KeyTimeExpiredAndThrowsBadRequestException" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +382,20 @@
       <workItem from="1646243739887" duration="1501000" />
       <workItem from="1646321031519" duration="1382000" />
       <workItem from="1646382573545" duration="84000" />
-      <workItem from="1646383971878" duration="284000" />
+      <workItem from="1646383971878" duration="757000" />
+      <workItem from="1646398383581" duration="192000" />
+      <workItem from="1646398598439" duration="7114000" />
+      <workItem from="1646406210681" duration="6224000" />
+      <workItem from="1646419733489" duration="4183000" />
+      <workItem from="1646490732860" duration="3316000" />
+      <workItem from="1646566025502" duration="15613000" />
+      <workItem from="1646647535617" duration="1347000" />
+      <workItem from="1646672785213" duration="8294000" />
+      <workItem from="1646727309774" duration="1765000" />
+      <workItem from="1646762166127" duration="2532000" />
+      <workItem from="1646766084995" duration="1936000" />
+      <workItem from="1646941764270" duration="55000" />
+      <workItem from="1646942434491" duration="4400000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1643125004173</created>
@@ -363,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645885271331</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="some changes!">
+      <created>1646384874106</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1646384874106</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,5 +562,152 @@
     <MESSAGE value="Book cover images added!" />
     <MESSAGE value="some changes!" />
     <option name="LAST_COMMIT_MESSAGE" value="some changes!" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.springframework.data.domain.PageImpl" memberName="content" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/library$AuthorServiceImplTest_notSavesBecauseOfDuplicate.ic" NAME="AuthorServiceImplTest.notSavesBecauseOfDuplicate Coverage Results" MODIFIED="1646410249999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_CanRemoveById.ic" NAME="UserServiceImplTest.CanRemoveById Coverage Results" MODIFIED="1646944710676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_verifyUserEmail.ic" NAME="UserServiceImplTest.verifyUserEmail Coverage Results" MODIFIED="1646943657964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$RoleServiceImplTest.ic" NAME="RoleServiceImplTest Coverage Results" MODIFIED="1646728657725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_userNotFoundDuringVerificationAndThrowsAnException.ic" NAME="UserServiceImplTest.userNotFoundDuringVerificationAndThrowsAnException Coverage Results" MODIFIED="1646943788720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_CanGetById.ic" NAME="BookServiceImplTest.CanGetById Coverage Results" MODIFIED="1646573979185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_upToResetPassword.ic" NAME="UserServiceImplTest.upToResetPassword Coverage Results" MODIFIED="1646945502635" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$AuthorServiceImplTest_CanNotRemoveById.ic" NAME="AuthorServiceImplTest.CanNotRemoveById Coverage Results" MODIFIED="1646569303408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$NotificationServiceImplTest_getAll.ic" NAME="NotificationServiceImplTest.getAll Coverage Results" MODIFIED="1646675561203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$NotificationServiceImplTest_CanUpdate.ic" NAME="NotificationServiceImplTest.CanUpdate Coverage Results" MODIFIED="1646677483627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$NotificationServiceImplTest_CanNotUpdate.ic" NAME="NotificationServiceImplTest.CanNotUpdate Coverage Results" MODIFIED="1646677544619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookRepositoryTest.ic" NAME="BookRepositoryTest Coverage Results" MODIFIED="1646422524615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.repository.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_doReservation.ic" NAME="BookServiceImplTest.doReservation Coverage Results" MODIFIED="1646576017620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$NotificationServiceImplTest.ic" NAME="NotificationServiceImplTest Coverage Results" MODIFIED="1646677559539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$AuthorServiceImplTest_CanNotUpdate.ic" NAME="AuthorServiceImplTest.CanNotUpdate Coverage Results" MODIFIED="1646570672933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_save.ic" NAME="BookServiceImplTest.save Coverage Results" MODIFIED="1646571929717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_userNotFoundByTheEmailDuringResetPassword.ic" NAME="UserServiceImplTest.userNotFoundByTheEmailDuringResetPassword Coverage Results" MODIFIED="1646945627252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$NotificationServiceImplTest_getAllByUserId.ic" NAME="NotificationServiceImplTest.getAllByUserId Coverage Results" MODIFIED="1646675630707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$AuthorServiceImplTest.ic" NAME="AuthorServiceImplTest Coverage Results" MODIFIED="1646570726197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$NotificationServiceImplTest_removeById.ic" NAME="NotificationServiceImplTest.removeById Coverage Results" MODIFIED="1646677276661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_testSave.ic" NAME="BookServiceImplTest.testSave Coverage Results" MODIFIED="1646572110879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_doReturnBooks.ic" NAME="BookServiceImplTest.doReturnBooks Coverage Results" MODIFIED="1646674423174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$NotificationServiceImplTest_CanGetById.ic" NAME="NotificationServiceImplTest.CanGetById Coverage Results" MODIFIED="1646675891555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_userNotFoundForBeingVerifiedAndThrowsException.ic" NAME="UserServiceImplTest.userNotFoundForBeingVerifiedAndThrowsException Coverage Results" MODIFIED="1646944177092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_CannotSendEmailAboutVerificationOfAccountAndThrowMessagingException.ic" NAME="UserServiceImplTest.CannotSendEmailAboutVerificationOfAccountAndThrowMessagingException Coverage Results" MODIFIED="1646768216893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_resetPassword.ic" NAME="UserServiceImplTest.resetPassword Coverage Results" MODIFIED="1646946220829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$AuthorServiceImplTest_CanGetById.ic" NAME="AuthorServiceImplTest.CanGetById Coverage Results" MODIFIED="1646411590632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$ReceiptServiceImplTest_getAll.ic" NAME="ReceiptServiceImplTest.getAll Coverage Results" MODIFIED="1646677874988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_testGetAll.ic" NAME="BookServiceImplTest.testGetAll Coverage Results" MODIFIED="1646571291515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$AuthorServiceImplTest_CannotGetById.ic" NAME="AuthorServiceImplTest.CannotGetById Coverage Results" MODIFIED="1646412594092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_doPickUp.ic" NAME="BookServiceImplTest.doPickUp Coverage Results" MODIFIED="1646673819406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$ReceiptServiceImplTest.ic" NAME="ReceiptServiceImplTest Coverage Results" MODIFIED="1646682642223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$NotificationServiceImplTest_CanSave.ic" NAME="NotificationServiceImplTest.CanSave Coverage Results" MODIFIED="1646677169645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_save.ic" NAME="UserServiceImplTest.save Coverage Results" MODIFIED="1646763019819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest.ic" NAME="UserServiceImplTest Coverage Results" MODIFIED="1646946761510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_sendPickUpAndReceiptEmail.ic" NAME="BookServiceImplTest.sendPickUpAndReceiptEmail Coverage Results" MODIFIED="1646578540650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_testFindPaginated.ic" NAME="BookServiceImplTest.testFindPaginated Coverage Results" MODIFIED="1646675258434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$AuthorServiceImplTest_CanUpdate.ic" NAME="AuthorServiceImplTest.CanUpdate Coverage Results" MODIFIED="1646570192080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest.ic" NAME="BookServiceImplTest Coverage Results" MODIFIED="1646675279290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$ReceiptServiceImplTest_CanNotGetByISBN.ic" NAME="ReceiptServiceImplTest.CanNotGetByISBN Coverage Results" MODIFIED="1646681473243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_testSaveWhenBookByIsbnFoundedAndDuplicateBookFounded.ic" NAME="BookServiceImplTest.testSaveWhenBookByIsbnFoundedAndDuplicateBookFounded Coverage Results" MODIFIED="1646573832266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$UserServiceImplTest_CannotRemoveByIdAndThrowsException.ic" NAME="UserServiceImplTest.CannotRemoveByIdAndThrowsException Coverage Results" MODIFIED="1646944810380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$AuthorServiceImplTest_CenGetByBookId.ic" NAME="AuthorServiceImplTest.CenGetByBookId Coverage Results" MODIFIED="1646492019148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_CanNotGetById.ic" NAME="BookServiceImplTest.CanNotGetById Coverage Results" MODIFIED="1646574194211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$BookServiceImplTest_findPaginated.ic" NAME="BookServiceImplTest.findPaginated Coverage Results" MODIFIED="1646675118929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/library$NotificationServiceImplTest_CanNotGetById.ic" NAME="NotificationServiceImplTest.CanNotGetById Coverage Results" MODIFIED="1646676035295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.app.library.service.*</FILTER>
+    </SUITE>
   </component>
 </project>

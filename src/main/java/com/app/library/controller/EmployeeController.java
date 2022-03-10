@@ -205,7 +205,7 @@ public class EmployeeController {
 	}
 
 	@DeleteMapping(value="/books/deletebook/{deleteBookId}")
-	public String deleteBook(@PathVariable Long deleteBookId) {
+	public String deleteBook(@PathVariable Long deleteBookId) throws NotFoundException {
 		bookService.removeById(deleteBookId);
 		return "redirect:/employee/books/bookdeleted";
 	}

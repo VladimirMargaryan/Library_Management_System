@@ -17,7 +17,7 @@ public interface ReceiptService {
     Receipt getById(Long id) throws NotFoundException;
     Receipt save(Receipt receipt);
     Receipt getReceiptByBookIdAndUserIdAndReceiptStatus(Long bookId, Long userId, ReceiptStatus status);
-    void removeById(Long id);
+    void removeById(Long id) throws NotFoundException;
     Receipt update(Receipt receipt) throws NotFoundException;
 
 }

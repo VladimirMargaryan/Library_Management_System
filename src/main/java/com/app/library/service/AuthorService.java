@@ -13,6 +13,6 @@ public interface AuthorService {
     List<Author> getAll();
     Author save(Author author);
     Author getByFirstnameAndLastnameAndGender(String firstname, String lastname, Gender gender);
-    void removeById(Long id);
+    void removeById(Long id) throws NotFoundException;
     Author update(Author author) throws NotFoundException;
 }
