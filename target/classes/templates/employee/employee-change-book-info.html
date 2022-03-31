@@ -27,10 +27,12 @@
 				</div>
 
 				<div class="col-75">
-					<img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="bookImage" />
-						<input type="file" id="photo" name="file" accept="image/png, image/jpeg"/>
+					<img th:src="${'data:image/jpeg;base64,'+ book.photo}" alt="No Image" class="bookImage" id="preview" />
+					<input type="file" id="photo" name="file" accept="image/png, image/jpeg" onchange="showPreview(event);"/>
 				</div>
 			</div>
+
+			<script type="text/javascript" th:src="@{/js/script.js}"></script>
 			<br>
 			<div class="row">
 				<div class="col-50">
@@ -152,7 +154,7 @@
 					<input type="hidden" name="_method" th:value="PUT">
 				</div>
 			</div>
-		</form>	
+		</form>
 	</div>
 </body>
 </html>

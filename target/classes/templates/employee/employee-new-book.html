@@ -27,7 +27,8 @@
 					</div>
 
 					<div class="col-75">
-						<input type="file" id="photo" name="file" accept="image/png, image/jpeg"/>
+						<img id="preview" />
+						<input type="file" id="photo" name="file" accept="image/png, image/jpeg" onchange="showPreview(event);"/>
 					</div>
 				</div>
 				<br>
@@ -90,7 +91,6 @@
 					</div>
 				</div>
 			</form>
-
 		</div>
 </body>
 </html>

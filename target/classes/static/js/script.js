@@ -32,3 +32,16 @@ function popup(myLink, windowName) {
     window.open(href, windowName + (Math.random() + 1).toString(36).substring(7), 'width=700,height=500,scrollbars=yes');
     return false;
 }
+
+
+function showPreview(event){
+    if(event.target.files.length > 0){
+        let src = URL.createObjectURL(event.target.files[0]);
+        let preview = document.getElementById("preview");
+        preview.src = src;
+        preview.style.display = "block";
+        preview.style.width = "110px";
+        preview.style.height = "160px";
+
+    }
+}

@@ -5,7 +5,6 @@ import com.app.library.model.Book;
 import com.app.library.model.ListEntry;
 import com.app.library.model.User;
 import com.app.library.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
